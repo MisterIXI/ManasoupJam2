@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da58216a096c73449890e71d60641b9, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
-  MoveSpeed: 6.37
+  MoveSpeed: 5
   SlashCooldown: 1.83
+  SlashDuration: 0.25
+  SlashLerpType: 0
+  DebugSword: 0
+  MagicCooldown: 1
