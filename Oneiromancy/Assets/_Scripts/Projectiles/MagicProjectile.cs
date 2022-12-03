@@ -8,18 +8,30 @@ public class MagicProjectile : MonoBehaviour
 
     private float _spawnTime;
     private Rigidbody _rigidbody;
-    private void Start() {
+    private void Start()
+    {
         _spawnTime = Time.time;
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         // move 
         _rigidbody.MovePosition(transform.position + transform.forward * playerSettings.MagicProjectileSpeed * Time.fixedDeltaTime);
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other)
+    {
         // destroy on collision
-        Destroy(gameObject);
+        if (other.CompareTag("Enemy") || other.CompareTag("Obstacle"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if(other.CompareTag("Bounds")) {
+            Destroy(gameObject);
+        }
     }
 }

@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
   MoveSpeed: 5
+  SlashDirectionDeltaMin: 1.33
   SlashCooldown: 1.83
   SlashDuration: 0.19
   SlashLerpType: 1
   DebugSword: 0
   MagicCooldown: 1
+  MagicProjectileSpeed: 10
+  BoundsLength: 77.05
