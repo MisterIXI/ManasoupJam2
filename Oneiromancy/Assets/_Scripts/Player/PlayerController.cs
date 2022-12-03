@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 _movement;
     private PlayerAction _playerAction;
+
     private void Awake()
     {
         ReferenceManager.PlayerController = this;
@@ -32,8 +33,9 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        Vector3 moveDirection = new Vector3(_moveInput.x, 0, _moveInput.y);
-        _rb.MovePosition(transform.position + moveDirection * PlayerSettings.MoveSpeed * Time.deltaTime);
+        Vector3 moveDirection = new Vector3(_moveInput.x, 0, _moveInput.y) * PlayerSettings.MoveSpeed * Time.deltaTime;
+        moveDirection = _playerAction.AdjustMovement(moveDirection);
+        _rb.MovePosition(transform.position + moveDirection);
     }
 
     private void Aim()
@@ -60,8 +62,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        // draw aim reticle
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(_aimReticle, 0.3f);
+
+        // draw Projectile bounds
+        Gizmos.color = Color.blue;
+        //right
+        float boundLength = PlayerSettings.BoundsLength;
+        Vector3 topRight = new(boundLength, 0, boundLength);
+        Vector3 bottomRight = new(boundLength, 0, -boundLength);
+        Vector3 topLeft = new(-boundLength, 0, boundLength);
+        Vector3 bottomLeft = new(-boundLength, 0, -boundLength);
+        Gizmos.DrawLine(topRight, bottomRight);
+        Gizmos.DrawLine(topRight, topLeft);
+        Gizmos.DrawLine(bottomRight, bottomLeft);
+        Gizmos.DrawLine(topLeft, bottomLeft);
     }
 
     #region Input Events

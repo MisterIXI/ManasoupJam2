@@ -7,13 +7,13 @@ public class PlayerAction : MonoBehaviour
 {
 
 
-    [SerializeField] private GameObject _magicPrefab;
     private PlayerSettings _playerSettings;
 
     private void Start()
     {
         _playerSettings = ReferenceManager.PlayerController.PlayerSettings;
         SwordSetup();
+        MagicSetup();
     }
 
     private void Update()
@@ -100,17 +100,46 @@ public class PlayerAction : MonoBehaviour
         }
     }
     #endregion
+    #region Magic
+    [SerializeField] private GameObject _magicPrefab;
+
+    private void MagicSetup()
+    {
+        GameObject ProjectileBounds = new GameObject("ProjectileBounds");
+        ProjectileBounds.tag = "Bounds";
+        ProjectileBounds.AddComponent<BoxCollider>();
+        ProjectileBounds.GetComponent<BoxCollider>().isTrigger = true;
+        ProjectileBounds.transform.localScale = _playerSettings.BoundsLength * 2f * Vector3.one;
+    }
     public void Shoot(InputAction.CallbackContext context)
     {
-        Vector3 spawnPoint = transform.position + transform.forward;
-        GameObject magic = Instantiate(_magicPrefab, spawnPoint, transform.rotation);
+        if (context.performed)
+        {
+            Vector3 spawnPoint = transform.position + transform.forward;
+            GameObject magic = Instantiate(_magicPrefab, spawnPoint, transform.rotation);
+        }
     }
 
+    #endregion
+
+    #region Block
+
+
+
+
+    public Vector3 AdjustMovement(Vector3 movement)
+    {
+        return movement * _playerSettings.BlockSlowdown;
+    }
+    
     public void Block(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            
+
         }
     }
+    #endregion
+
+
 }
