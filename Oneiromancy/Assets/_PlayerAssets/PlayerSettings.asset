@@ -12,12 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da58216a096c73449890e71d60641b9, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
-  SlashDirectionDeltaMin: 1.33
-  SlashCooldown: 1.83
+  MoveSpeed: 15
+  SwordDamage: 2
+  SlashDirectionDeltaMin: 0.23
+  SlashCooldown: 0.13
   SlashDuration: 0.19
   SlashLerpType: 1
   DebugSword: 0
+  MagicDamage: 1
   MagicCooldown: 1
   MagicProjectileSpeed: 10
-  BoundsLength: 77.05
+  BoundsLength: 19.18
+  BlockSlowdown: 1
+  BlockColliderSize: 1
+  MaxProjectiles: 8
+  CanPushEnemies: 1
+  MaxHealth: 5
+  EnemyKnockBackForce: 10
+  EnemySpeed: 5
+  FollowEnemyHealthRange: {x: 10, y: 30}
+  SE_HealthRange: {x: 10, y: 25}
+  SE_ShotRange: 10
+  EnemyProjectileSpeed: 10
+  SE_ShotCooldown: 1
+  ChargeEnemyHealthRange: {x: 15, y: 25}
+  CE_Cooldown: 2
+  CE_ChargeTime: 1.5
+  CE_ImpluseMultiplier: 30
+  CE_Range: 10
+  CameraOffset: {x: 0, y: 16.85, z: -11}
