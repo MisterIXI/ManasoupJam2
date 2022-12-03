@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
         Aim();
     }
 
-// hi
     private void Move()
     {
         Vector3 moveDirection = new Vector3(_moveInput.x, 0, _moveInput.y);
