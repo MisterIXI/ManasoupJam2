@@ -102,7 +102,7 @@ public class PlayerAction : MonoBehaviour
     #endregion
     #region Magic
     [SerializeField] private GameObject _magicPrefab;
-
+    [SerializeField] private GameObject _magicLaserPointer;
     private void MagicSetup()
     {
         GameObject ProjectileBounds = new GameObject("ProjectileBounds");
@@ -113,8 +113,13 @@ public class PlayerAction : MonoBehaviour
     }
     public void Shoot(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.started)
         {
+            _magicLaserPointer.SetActive(true);
+        }
+        if (context.canceled)
+        {
+            _magicLaserPointer.SetActive(false);
             Vector3 spawnPoint = transform.position + transform.forward;
             GameObject magic = Instantiate(_magicPrefab, spawnPoint, transform.rotation);
         }
@@ -131,7 +136,7 @@ public class PlayerAction : MonoBehaviour
     {
         return movement * _playerSettings.BlockSlowdown;
     }
-    
+
     public void Block(InputAction.CallbackContext context)
     {
         if (context.performed)
