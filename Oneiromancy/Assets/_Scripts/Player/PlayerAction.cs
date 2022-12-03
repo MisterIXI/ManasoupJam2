@@ -117,15 +117,10 @@ public class PlayerAction : MonoBehaviour
             lerp = -lerp;
 
         _sword.localRotation = Quaternion.Euler(0, lerp, 0);
+        // lerp += transform.eulerAngles.y;
+        // _swordRb.MoveRotation(Quaternion.Euler(0, lerp, 0));
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            //TODO: deal damage to enemny
-            Debug.Log("Hit enemy");
-        }
-    }
+
     #endregion
     #region Magic
     [SerializeField] private GameObject _magicPrefab;
