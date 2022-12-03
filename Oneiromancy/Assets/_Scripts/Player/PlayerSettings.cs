@@ -30,6 +30,7 @@ public class PlayerSettings : ScriptableObject
 
     #region Sword
     [Header("Sword")]
+    [Range(1, 5)] public int SwordDamage = 2;
     [Range(0, 2)] public float SlashDirectionDeltaMin = 0.3f;
     [Range(0, 2)] public float SlashCooldown = 0.05f;
     [Range(0.01f, 1)] public float SlashDuration = 0.5f;
@@ -40,6 +41,7 @@ public class PlayerSettings : ScriptableObject
 
     #region Magic
     [Header("Magic")]
+    [Range(1, 5)] public int MagicDamage = 1;
     [Range(0, 2)] public float MagicCooldown = 1f;
     [Range(0f, 50f)] public float MagicProjectileSpeed = 10f;
     public float BoundsLength = 10f;
@@ -59,7 +61,20 @@ public class PlayerSettings : ScriptableObject
 
     #region Enemies
     [Header("Enemies")]
+    [Range(0f, 50f)] public float EnemyKnockBackForce = 5f;
+    [Range(1f, 20f)] public float EnemySpeed = 5f;
+    [Header("FollowEnemy")]
+    public Vector2Int FollowEnemyHealthRange = new Vector2Int(15, 30);
+
+
+    [Header("ShooterEnemy")]
+    public Vector2Int SE_HealthRange = new Vector2Int(10, 25);
+    [Range(5f, 50f)] public float SE_ShotRange = 10f;
     [Range(0f, 50f)] public float EnemyProjectileSpeed = 50f;
+    [Range(0f, 50f)] public float SE_ShotCooldown = 1f;
+    [Header("ChargeEnemy")]
+    public Vector2Int ChargeEnemyHealthRange = new Vector2Int(15, 25);
+
     #endregion
 
     #region Camera
