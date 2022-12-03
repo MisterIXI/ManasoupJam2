@@ -5,20 +5,25 @@ using UnityEngine;
 public class TestEnemy : MonoBehaviour
 {
     private float _lastShootTime;
+    private Transform _playerTransform;
     [SerializeField] private GameObject _projectilePrefab;
 
     private void Start()
     {
         _lastShootTime = Time.time;
+        _playerTransform = ReferenceManager.PlayerController.transform;
     }
 
     private void Update()
-    {
-        if (Time.time - _lastShootTime > 1.5f)
+    {   
+        // rotate towards player
+        transform.LookAt(_playerTransform);
+        if (Time.time - _lastShootTime > 0.1f)
         {
             _lastShootTime = Time.time;
             Shoot();
         }
+
     }
 
     private void Shoot()

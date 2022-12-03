@@ -61,4 +61,9 @@ public class PlayerSettings : ScriptableObject
     [Header("Enemies")]
     [Range(0f, 50f)] public float EnemyProjectileSpeed = 50f;
     #endregion
+
+    #region Camera
+    [Header("Camera")]
+    public Vector3 CameraOffset = new Vector3(0, 8f, -5);
+    #endregion
 }

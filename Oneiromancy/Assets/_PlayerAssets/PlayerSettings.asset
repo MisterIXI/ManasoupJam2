@@ -26,5 +26,5 @@ MonoBehaviour:
   MaxProjectiles: 8
   CanPushEnemies: 1
   MaxHealth: 5
-  CurrentHealth: 3
   EnemyProjectileSpeed: 10
+  CameraOffset: {x: 0, y: 16.85, z: -11}
