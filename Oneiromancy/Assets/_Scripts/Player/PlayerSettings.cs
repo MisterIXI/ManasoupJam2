@@ -25,7 +25,7 @@ public class PlayerSettings : ScriptableObject
     
     #region Movement
     [Header("Movement")]
-    public float MoveSpeed = 5f;
+    public float MoveSpeed = 40f;
     #endregion
 
     #region Sword
@@ -43,5 +43,14 @@ public class PlayerSettings : ScriptableObject
     [Range(0, 2)] public float MagicCooldown = 1f;
     [Range(0f, 50f)] public float MagicProjectileSpeed = 10f;
     public float BoundsLength = 10f;
+    #endregion
+    #region Blocking
+    [Header("Blocking")]
+    [Range(0, 1f)] public float BlockSlowdown= 0.2f;
+    [Range(0.5f, 2f)] public float BlockColliderSize = 1f;
+    public bool CanPushEnemies = true;
+    #endregion
+    #region Health
+
     #endregion
 }

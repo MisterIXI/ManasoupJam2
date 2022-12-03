@@ -120,6 +120,18 @@ public class PlayerAction : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Block
+
+
+
+
+    public Vector3 AdjustMovement(Vector3 movement)
+    {
+        return movement * _playerSettings.BlockSlowdown;
+    }
+    
     public void Block(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -129,8 +141,5 @@ public class PlayerAction : MonoBehaviour
     }
     #endregion
 
-    private void OnDrawGizmos()
-    {
 
-    }
 }
