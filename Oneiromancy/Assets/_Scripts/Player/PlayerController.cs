@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         
         _rb.MovePosition(transform.position + _actualMovement);
         if (_isReticleMouseMode)
-            _aimInput += moveDirection;
+            _aimInput += _actualMovement;
     }
     private void KnockBack(Vector3 source, float force)
     {

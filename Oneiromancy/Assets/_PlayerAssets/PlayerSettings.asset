@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da58216a096c73449890e71d60641b9, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
-  MoveSpeedMult: 0.333
-  MoveAcceleration: 3.25
+  MoveSpeedMult: 0.3
+  MoveAcceleration: 5
   SwordDamage: 2
   SlashDirectionDeltaMin: 0.23
   SlashCooldown: 0.13
