@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4058900914631969589}
   - component: {fileID: 2568993905434725189}
   - component: {fileID: 1843928097479099285}
+  - component: {fileID: 4454525966271766396}
   m_Layer: 0
   m_Name: ShooterEnemy
   m_TagString: Enemy
@@ -29,7 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1337486628735480115}
   m_Father: {fileID: 0}
@@ -78,6 +79,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyProjectilePrefab: {fileID: 4413988497694516666, guid: e1b373bab77901140a31be9bcc827ec6, type: 3}
+--- !u!95 &4454525966271766396
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510458941636719819}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f59397396db78914cab7330cdb63d263, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1514630584366896856
 PrefabInstance:
   m_ObjectHideFlags: 0
