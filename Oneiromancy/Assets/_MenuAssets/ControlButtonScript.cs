@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
 {
-    public GameObject Panel;
+    [SerializeField] public GameObject PanelControls;
+    public GameObject PanelCredits;
 
     public void OpenPane()
     {
-        if(Panel != null)
+        if(PanelControls != null)
         {
-            Panel.SetActive(true);
+            PanelControls.SetActive(true);
+            PanelCredits.SetActive(false);
+        }
+        else
+        {
+            PanelControls.SetActive(false);
+            PanelCredits.SetActive(false);
         }
     }
 }
