@@ -8,6 +8,8 @@ TagManager:
   - Obstacle
   - Bounds
   - EnemyProjectile
+  - PlayerProjectile
+  - Sword
   layers:
   - Default
   - TransparentFX

@@ -74,6 +74,8 @@ public class PlayerSettings : ScriptableObject
     [Range(0f, 50f)] public float SE_ShotCooldown = 1f;
     [Header("ChargeEnemy")]
     public Vector2Int ChargeEnemyHealthRange = new Vector2Int(15, 25);
+    [Range(1, 10)] public float CE_ImpluseMultiplier = 1;
+    [Range(5f, 50f)] public float CE_Range = 15f;
 
     #endregion
 
