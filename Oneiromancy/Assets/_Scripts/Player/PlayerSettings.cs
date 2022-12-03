@@ -22,18 +22,18 @@ public class PlayerSettings : ScriptableObject
                 return t;
         }
     }
-    
+
     #region Movement
     [Header("Movement")]
-    public float MoveSpeed = 40f;
+    public float MoveSpeed = 15f;
     #endregion
 
     #region Sword
     [Header("Sword")]
-    [Range(0,2)] public float SlashDirectionDeltaMin = 0.5f;
-    [Range(0, 2)]public float SlashCooldown = 1f;
+    [Range(0, 2)] public float SlashDirectionDeltaMin = 0.3f;
+    [Range(0, 2)] public float SlashCooldown = 0.05f;
     [Range(0.01f, 1)] public float SlashDuration = 0.5f;
-    public LerpType SlashLerpType = LerpType.EaseInOut;
+    public LerpType SlashLerpType = LerpType.EaseIn;
     public bool DebugSword = false;
 
     #endregion
@@ -46,8 +46,9 @@ public class PlayerSettings : ScriptableObject
     #endregion
     #region Blocking
     [Header("Blocking")]
-    [Range(0, 1f)] public float BlockSlowdown= 0.2f;
+    [Range(0, 1f)] public float BlockSlowdown = 0.2f;
     [Range(0.5f, 2f)] public float BlockColliderSize = 1f;
+    public int MaxProjectiles = 8;
     public bool CanPushEnemies = true;
     #endregion
     #region Health

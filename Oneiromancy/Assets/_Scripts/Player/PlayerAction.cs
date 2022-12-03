@@ -27,21 +27,26 @@ public class PlayerAction : MonoBehaviour
     [SerializeField] private TrailRenderer _swordTrail;
     private Rigidbody _swordRb;
     private Collider _swordCollider;
+    private bool _onSlashCD;
     private bool _isSlashing;
     private float _slashStartTime;
     private bool _slashToLeft;
+    private bool _isSlashingHeld;
     public void SetSlashDir(bool slashToLeft)
     {
-        if (!_isSlashing && _slashToLeft != slashToLeft)
+        // if (_isSlashingHeld)
+        //     return;
+        if ( _slashToLeft != slashToLeft)
         {
+            if (_playerSettings.DebugSword)
+                Debug.Log("Slash direction changed to " + slashToLeft);
             _slashToLeft = slashToLeft;
-            if (_slashToLeft)
+            if (!_isSlashing &&_slashToLeft)
                 _sword.localRotation = Quaternion.Euler(0, 90, 0);
             else
                 _sword.localRotation = Quaternion.Euler(0, -90, 0);
         }
-        else
-            _slashToLeft = slashToLeft;
+
     }
     private void SwordSetup()
     {
@@ -58,21 +63,39 @@ public class PlayerAction : MonoBehaviour
     }
     public void Slash(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.started)
         {
-            _slashStartTime = Time.time;
-            _isSlashing = true;
-            _slashToLeft = !_slashToLeft;
-            SlashIncrement();
-            _swordTrail.Clear();
-            _swordTrail.enabled = true;
-            _swordCollider.enabled = true;
-
-            if (_playerSettings.DebugSword)
-                Debug.Log("Slash Started");
+            _isSlashingHeld = true;
+            if (!_onSlashCD)
+                StartNewSlash();
+        }
+        if (context.canceled)
+        {
+            _isSlashingHeld = false;
         }
     }
+    private void StartNewSlash()
+    {
+        _onSlashCD = true;
+        _slashStartTime = Time.time;
+        _isSlashing = true;
 
+        SlashIncrement();
+        _swordTrail.Clear();
+        _swordTrail.enabled = true;
+        _swordCollider.enabled = true;
+        if (_playerSettings.DebugSword)
+            Debug.Log("Slash Started");
+    }
+    IEnumerator SlashCooldown()
+    {
+        yield return new WaitForSeconds(_playerSettings.SlashCooldown);
+        _onSlashCD = false;
+        if (_isSlashingHeld)
+        {
+            StartNewSlash();
+        }
+    }
     private void SlashIncrement()
     {
         float t = (Time.time - _slashStartTime) / _playerSettings.SlashDuration;
@@ -81,8 +104,12 @@ public class PlayerAction : MonoBehaviour
             _isSlashing = false;
             _swordTrail.enabled = false;
             _swordCollider.enabled = false;
+            _slashToLeft = !_slashToLeft;
+            StartCoroutine(SlashCooldown());
+
             if (_playerSettings.DebugSword)
                 Debug.Log("Slash End");
+
             return;
         }
         float lerp = _playerSettings.Lerp(t, _playerSettings.SlashLerpType) * 180f - 90f;
@@ -103,6 +130,7 @@ public class PlayerAction : MonoBehaviour
     #region Magic
     [SerializeField] private GameObject _magicPrefab;
     [SerializeField] private GameObject _magicLaserPointer;
+    private int _magicCount;
     private void MagicSetup()
     {
         GameObject ProjectileBounds = new GameObject("ProjectileBounds");
@@ -120,9 +148,18 @@ public class PlayerAction : MonoBehaviour
         if (context.canceled)
         {
             _magicLaserPointer.SetActive(false);
-            Vector3 spawnPoint = transform.position + transform.forward;
-            GameObject magic = Instantiate(_magicPrefab, spawnPoint, transform.rotation);
+            if (_magicCount < _playerSettings.MaxProjectiles)
+            {
+                Vector3 spawnPoint = transform.position + transform.forward;
+                GameObject magic = Instantiate(_magicPrefab, spawnPoint, transform.rotation);
+                _magicCount++;
+            }
         }
+    }
+
+    public void OnProjectileDestroy()
+    {
+        _magicCount--;
     }
 
     #endregion
@@ -130,11 +167,15 @@ public class PlayerAction : MonoBehaviour
     #region Block
 
 
+    private bool _isBlocking;
 
 
     public Vector3 AdjustMovement(Vector3 movement)
     {
-        return movement * _playerSettings.BlockSlowdown;
+        if (_isBlocking)
+            return movement * _playerSettings.BlockSlowdown;
+        else
+            return movement;
     }
 
     public void Block(InputAction.CallbackContext context)

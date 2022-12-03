@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da58216a096c73449890e71d60641b9, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
-  MoveSpeed: 30
-  SlashDirectionDeltaMin: 1.33
-  SlashCooldown: 1.83
+  MoveSpeed: 15
+  SlashDirectionDeltaMin: 0.37
+  SlashCooldown: 0.07
   SlashDuration: 0.19
   SlashLerpType: 1
   DebugSword: 0
   MagicCooldown: 1
   MagicProjectileSpeed: 10
-  BoundsLength: 80
-  BlockSlowdown: 0.2
+  BoundsLength: 19.18
+  BlockSlowdown: 1
   BlockColliderSize: 1
+  MaxProjectiles: 8
   CanPushEnemies: 1

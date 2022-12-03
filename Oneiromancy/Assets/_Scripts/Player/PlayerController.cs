@@ -6,13 +6,13 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] public PlayerSettings PlayerSettings;
+    public PlayerAction PlayerAction;
     private Vector2 _moveInput;
     private Vector3 _aimInput;
     private Vector3 _aimReticle = Vector3.forward * 5;
     private bool _isReticleMouseMode = true;
     private Rigidbody _rb;
     private Vector3 _movement;
-    private PlayerAction _playerAction;
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _playerAction = GetComponent<PlayerAction>();
+        PlayerAction = GetComponent<PlayerAction>();
         SubscribeToInputEvents();
     }
 
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         Vector3 moveDirection = new Vector3(_moveInput.x, 0, _moveInput.y) * PlayerSettings.MoveSpeed * Time.deltaTime;
-        moveDirection = _playerAction.AdjustMovement(moveDirection);
+        moveDirection = PlayerAction.AdjustMovement(moveDirection);
         _rb.MovePosition(transform.position + moveDirection);
     }
 
@@ -54,10 +54,11 @@ public class PlayerController : MonoBehaviour
             _aimReticle = transform.forward * 5 + transform.position;
         }
         float deltaY = Mathf.DeltaAngle(oldY, transform.eulerAngles.y);
+        Debug.Log(deltaY);
         if (deltaY < -PlayerSettings.SlashDirectionDeltaMin)
-            _playerAction.SetSlashDir(true);
+            PlayerAction.SetSlashDir(true);
         else if (deltaY > PlayerSettings.SlashDirectionDeltaMin)
-            _playerAction.SetSlashDir(false);
+            PlayerAction.SetSlashDir(false);
     }
 
     private void OnDrawGizmos()
@@ -136,15 +137,15 @@ public class PlayerController : MonoBehaviour
         input["Aim"].started += this.OnAim;
         input["Aim"].performed += this.OnAim;
         input["Aim"].canceled += this.OnAim;
-        input["Fire"].started += _playerAction.Shoot;
-        input["Fire"].performed += _playerAction.Shoot;
-        input["Fire"].canceled += _playerAction.Shoot;
-        input["Slash"].started += _playerAction.Slash;
-        input["Slash"].performed += _playerAction.Slash;
-        input["Slash"].canceled += _playerAction.Slash;
-        input["Block"].started += _playerAction.Block;
-        input["Block"].performed += _playerAction.Block;
-        input["Block"].canceled += _playerAction.Block;
+        input["Fire"].started += PlayerAction.Shoot;
+        input["Fire"].performed += PlayerAction.Shoot;
+        input["Fire"].canceled += PlayerAction.Shoot;
+        input["Slash"].started += PlayerAction.Slash;
+        input["Slash"].performed += PlayerAction.Slash;
+        input["Slash"].canceled += PlayerAction.Slash;
+        input["Block"].started += PlayerAction.Block;
+        input["Block"].performed += PlayerAction.Block;
+        input["Block"].canceled += PlayerAction.Block;
     }
 
     private void UnSubscribeToInputEvents()
@@ -156,15 +157,15 @@ public class PlayerController : MonoBehaviour
         input["Aim"].started -= this.OnAim;
         input["Aim"].performed -= this.OnAim;
         input["Aim"].canceled -= this.OnAim;
-        input["Fire"].started -= _playerAction.Shoot;
-        input["Fire"].performed -= _playerAction.Shoot;
-        input["Fire"].canceled -= _playerAction.Shoot;
-        input["Slash"].started -= _playerAction.Slash;
-        input["Slash"].performed -= _playerAction.Slash;
-        input["Slash"].canceled -= _playerAction.Slash;
-        input["Block"].started -= _playerAction.Block;
-        input["Block"].performed -= _playerAction.Block;
-        input["Block"].canceled -= _playerAction.Block;
+        input["Fire"].started -= PlayerAction.Shoot;
+        input["Fire"].performed -= PlayerAction.Shoot;
+        input["Fire"].canceled -= PlayerAction.Shoot;
+        input["Slash"].started -= PlayerAction.Slash;
+        input["Slash"].performed -= PlayerAction.Slash;
+        input["Slash"].canceled -= PlayerAction.Slash;
+        input["Block"].started -= PlayerAction.Block;
+        input["Block"].performed -= PlayerAction.Block;
+        input["Block"].canceled -= PlayerAction.Block;
     }
     #endregion
 }

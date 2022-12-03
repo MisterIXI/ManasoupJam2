@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class MagicProjectile : MonoBehaviour
 {
     [SerializeField] private PlayerSettings playerSettings;
@@ -33,5 +32,9 @@ public class MagicProjectile : MonoBehaviour
         if(other.CompareTag("Bounds")) {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy() {
+        ReferenceManager.PlayerController.PlayerAction.OnProjectileDestroy();
     }
 }
