@@ -42,5 +42,6 @@ public class PlayerSettings : ScriptableObject
     [Header("Magic")]
     [Range(0, 2)] public float MagicCooldown = 1f;
     [Range(0f, 50f)] public float MagicProjectileSpeed = 10f;
+    public float BoundsLength = 10f;
     #endregion
 }
