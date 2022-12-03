@@ -13,9 +13,8 @@ public class CameraSync : MonoBehaviour
         _playerSettings = ReferenceManager.PlayerController.PlayerSettings;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.position = _playerTransform.position + _playerSettings.CameraOffset;
-        transform.LookAt(_playerTransform);
+        transform.position = _playerTransform.position;
     }
 }
