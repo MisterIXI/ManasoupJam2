@@ -30,6 +30,19 @@ public class PlayerAction : MonoBehaviour
     private bool _isSlashing;
     private float _slashStartTime;
     private bool _slashToLeft;
+    public void SetSlashDir(bool slashToLeft)
+    {
+        if (!_isSlashing && _slashToLeft != slashToLeft)
+        {
+            _slashToLeft = slashToLeft;
+            if (_slashToLeft)
+                _sword.localRotation = Quaternion.Euler(0, 90, 0);
+            else
+                _sword.localRotation = Quaternion.Euler(0, -90, 0);
+        }
+        else
+            _slashToLeft = slashToLeft;
+    }
     private void SwordSetup()
     {
         _swordRb = _sword.gameObject.GetComponent<Rigidbody>();

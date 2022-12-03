@@ -30,7 +30,7 @@ public class PlayerSettings : ScriptableObject
 
     #region Sword
     [Header("Sword")]
-    
+    [Range(0,2)] public float SlashDirectionDeltaMin = 0.5f;
     [Range(0, 2)]public float SlashCooldown = 1f;
     [Range(0.01f, 1)] public float SlashDuration = 0.5f;
     public LerpType SlashLerpType = LerpType.EaseInOut;

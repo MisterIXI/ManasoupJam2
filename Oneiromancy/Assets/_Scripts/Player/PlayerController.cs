@@ -38,12 +38,24 @@ public class PlayerController : MonoBehaviour
 
     private void Aim()
     {
-        Vector3 target = new Vector3(_aimInput.x, 0, _aimInput.z) + transform.position;
-        transform.LookAt(target);
-        if (_isReticleMouseMode) // if aiming with mouse
-            _aimReticle = _aimInput + transform.position;
-        else // if aiming with controller
+        float oldY = transform.eulerAngles.y;
+        if (_isReticleMouseMode)
+        { // if aiming with mouse
+            Vector3 target = new Vector3(_aimInput.x, transform.position.y, _aimInput.z);
+            transform.LookAt(target);
+            _aimReticle = _aimInput;
+        }
+        else
+        { // if aiming with controller
+            Vector3 target = new Vector3(_aimInput.x, 0, _aimInput.z) + transform.position;
+            transform.LookAt(target);
             _aimReticle = transform.forward * 5 + transform.position;
+        }
+        float deltaY = Mathf.DeltaAngle(oldY, transform.eulerAngles.y);
+        if (deltaY < -PlayerSettings.SlashDirectionDeltaMin)
+            _playerAction.SetSlashDir(true);
+        else if (deltaY > PlayerSettings.SlashDirectionDeltaMin)
+            _playerAction.SetSlashDir(false);
     }
 
     private void OnDrawGizmos()
@@ -72,7 +84,7 @@ public class PlayerController : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(context.ReadValue<Vector2>());
             if (Physics.Raycast(ray, out RaycastHit hit, 1000f, LayerMask.GetMask("Ground")))
             {
-                _aimInput = hit.point - transform.position;
+                _aimInput = hit.point;
             }
             _isReticleMouseMode = true;
         }

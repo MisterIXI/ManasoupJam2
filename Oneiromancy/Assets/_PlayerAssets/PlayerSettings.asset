@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   SlashCooldown: 1.83
-  SlashDuration: 0.25
-  SlashLerpType: 0
+  SlashDuration: 0.19
+  SlashLerpType: 1
   DebugSword: 0
   MagicCooldown: 1
