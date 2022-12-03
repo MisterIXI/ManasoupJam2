@@ -37,7 +37,11 @@ public class PlayerController : MonoBehaviour
         moveDirection = PlayerAction.AdjustMovement(moveDirection);
         _rb.MovePosition(transform.position + moveDirection);
     }
-
+    private void KnockBack(Vector3 source, float force)
+    {
+        Vector3 direction = transform.position - source;
+        _rb.AddForce(direction.normalized * force, ForceMode.Impulse);
+    }
     private void Aim()
     {
         float oldY = transform.eulerAngles.y;
@@ -54,7 +58,7 @@ public class PlayerController : MonoBehaviour
             _aimReticle = transform.forward * 5 + transform.position;
         }
         float deltaY = Mathf.DeltaAngle(oldY, transform.eulerAngles.y);
-        Debug.Log(deltaY);
+        // Debug.Log(deltaY);
         if (deltaY < -PlayerSettings.SlashDirectionDeltaMin)
             PlayerAction.SetSlashDir(true);
         else if (deltaY > PlayerSettings.SlashDirectionDeltaMin)

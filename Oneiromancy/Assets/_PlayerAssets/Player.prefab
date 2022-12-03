@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 179476173824987565}
   - component: {fileID: 179476173824987564}
   - component: {fileID: 5308835927678499324}
+  - component: {fileID: 8313837850986181748}
   - component: {fileID: 179476173824987603}
   m_Layer: 0
   m_Name: Player
@@ -68,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerSettings: {fileID: 11400000, guid: 9214f473ff60c0c429fed420dd9f286d, type: 2}
+  PlayerAction: {fileID: 0}
 --- !u!114 &5308835927678499324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +86,18 @@ MonoBehaviour:
   _swordTrail: {fileID: 4116278231671679649}
   _magicPrefab: {fileID: 4265403699515111044, guid: 04448732315c2f848b003060428103bf, type: 3}
   _magicLaserPointer: {fileID: 9144547752143660357}
+--- !u!114 &8313837850986181748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179476173824987602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109722d976bf7074fb5442812b450b48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &179476173824987603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,7 +379,7 @@ BoxCollider:
   m_GameObject: {fileID: 179476174987469647}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

@@ -52,6 +52,13 @@ public class PlayerSettings : ScriptableObject
     public bool CanPushEnemies = true;
     #endregion
     #region Health
+    [Header("Health")]
+    public int MaxHealth = 5;
 
+    #endregion
+
+    #region Enemies
+    [Header("Enemies")]
+    [Range(0f, 50f)] public float EnemyProjectileSpeed = 50f;
     #endregion
 }
