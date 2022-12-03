@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDirection = new Vector3(_moveInput.x, 0, _moveInput.y) * PlayerSettings.MoveSpeed * Time.deltaTime;
         moveDirection = PlayerAction.AdjustMovement(moveDirection);
         _rb.MovePosition(transform.position + moveDirection);
+        if (_isReticleMouseMode)
+            _aimInput += moveDirection;
     }
     private void KnockBack(Vector3 source, float force)
     {
