@@ -28,10 +28,16 @@ MonoBehaviour:
   MaxProjectiles: 8
   CanPushEnemies: 1
   MaxHealth: 5
-  FollowEnemyHealthRange: {x: 10, y: 30}
-  ShooterEnemyHealthRange: {x: 10, y: 25}
-  ChargeEnemyHealthRange: {x: 15, y: 25}
-  EnemyProjectileSpeed: 10
   EnemyKnockBackForce: 10
   EnemySpeed: 5
+  FollowEnemyHealthRange: {x: 10, y: 30}
+  SE_HealthRange: {x: 10, y: 25}
+  SE_ShotRange: 10
+  EnemyProjectileSpeed: 10
+  SE_ShotCooldown: 1
+  ChargeEnemyHealthRange: {x: 15, y: 25}
+  CE_Cooldown: 2
+  CE_ChargeTime: 1.5
+  CE_ImpluseMultiplier: 30
+  CE_Range: 10
   CameraOffset: {x: 0, y: 16.85, z: -11}

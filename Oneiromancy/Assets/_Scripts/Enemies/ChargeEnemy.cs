@@ -5,6 +5,7 @@ using UnityEngine;
 public class ChargeEnemy : Enemy
 {
     private bool IsCharging;
+    private float _lastChargeTime;
     protected override void Init()
     {
         CurrentHealth = Random.Range(_playerSettings.ChargeEnemyHealthRange.x, _playerSettings.ChargeEnemyHealthRange.y + 1);
@@ -19,7 +20,7 @@ public class ChargeEnemy : Enemy
             Vector3 Target = _playerTransform.position;
             Target.y = transform.position.y;
             transform.LookAt(Target);
-            if (Distance < _playerSettings.CE_Range)
+            if (Time.time - _lastChargeTime > _playerSettings.CE_Cooldown && Distance < _playerSettings.CE_Range)
             {
                 IsCharging = true;
                 _rb.velocity = Vector3.zero;
@@ -38,6 +39,8 @@ public class ChargeEnemy : Enemy
     IEnumerator Charge()
     {
         yield return new WaitForSeconds(_playerSettings.CE_ChargeTime);
+        _lastChargeTime = Time.time;
+
         IsCharging = false;
         // impluse forward
         Debug.Log("Charge");
