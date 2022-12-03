@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae19ad976015374ab3649eeb537ee2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _magicPrefab: {fileID: 0}
+  _magicPrefab: {fileID: 4265403699515111044, guid: 04448732315c2f848b003060428103bf, type: 3}
   _sword: {fileID: 8810286191749238330}
   _swordTrail: {fileID: 4116278231671679649}
 --- !u!114 &179476173824987603
