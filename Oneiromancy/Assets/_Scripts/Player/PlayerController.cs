@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _aimReticle = Vector3.forward * 5;
     private bool _isReticleMouseMode = true;
     private Rigidbody _rb;
-    private Vector3 _movement;
+    private Vector3 _actualMovement;
 
     private void Awake()
     {
@@ -33,9 +33,12 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        Vector3 moveDirection = new Vector3(_moveInput.x, 0, _moveInput.y) * PlayerSettings.MoveSpeed * Time.deltaTime;
-        moveDirection = PlayerAction.AdjustMovement(moveDirection);
-        _rb.MovePosition(transform.position + moveDirection);
+        Vector3 moveDirection = new Vector3(_moveInput.x, 0, _moveInput.y) * PlayerSettings.MoveSpeedMult;
+        // ease in movement
+        _actualMovement = Vector3.MoveTowards(_actualMovement, moveDirection, PlayerSettings.MoveAcceleration * Time.fixedDeltaTime);
+        // moveDirection = PlayerAction.AdjustMovement(moveDirection);
+        
+        _rb.MovePosition(transform.position + _actualMovement);
         if (_isReticleMouseMode)
             _aimInput += moveDirection;
     }

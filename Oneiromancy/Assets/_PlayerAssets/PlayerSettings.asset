@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da58216a096c73449890e71d60641b9, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
-  MoveSpeed: 15
+  MoveSpeedMult: 0.333
+  MoveAcceleration: 3.25
   SwordDamage: 2
   SlashDirectionDeltaMin: 0.23
   SlashCooldown: 0.13
@@ -22,7 +23,7 @@ MonoBehaviour:
   MagicDamage: 1
   MagicCooldown: 1
   MagicProjectileSpeed: 10
-  BoundsLength: 19.18
+  BoundsLength: 60
   BlockSlowdown: 1
   BlockColliderSize: 1
   MaxProjectiles: 8

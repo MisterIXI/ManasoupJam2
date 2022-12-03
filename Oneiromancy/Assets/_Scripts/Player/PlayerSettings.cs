@@ -25,7 +25,8 @@ public class PlayerSettings : ScriptableObject
 
     #region Movement
     [Header("Movement")]
-    public float MoveSpeed = 15f;
+    [Range(0, 1)] public float MoveSpeedMult = 0.5f;
+    [Range(0, 10)] public float MoveAcceleration = 5f;
     #endregion
 
     #region Sword
