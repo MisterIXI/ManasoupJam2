@@ -47,5 +47,5 @@ MonoBehaviour:
   PortalMinPosition: -11.9
   PortalGizmos: 1
   ShowSpawnGizmos: 1
-  MinSpawnDistance: 25.9
-  MaxSpawnDistance: 70
+  MinSpawnDistance: 20.5
+  MaxSpawnDistance: 106
