@@ -62,7 +62,8 @@ public abstract class Enemy : MonoBehaviour
 
     private void KnockBack(Vector3 direction, float force)
     {
-        _rb.AddForce(direction * force, ForceMode.Impulse);
+        if (this is not ClockBoss)
+            _rb.AddForce(direction * force, ForceMode.Impulse);
     }
     abstract protected void OnDamage();
     private void OnDestroy()

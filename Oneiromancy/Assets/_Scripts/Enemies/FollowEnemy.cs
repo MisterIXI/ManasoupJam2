@@ -20,6 +20,7 @@ public class FollowEnemy : Enemy
         Vector3 moveTarget = transform.position + transform.forward * _playerSettings.EnemySpeed * Time.fixedDeltaTime;
         moveTarget.y = transform.position.y;
         _rb.MovePosition(moveTarget);
+        transform.position = new Vector3(transform.position.x, 1, transform.position.z);
     }
     protected override void OnDamage()
     {

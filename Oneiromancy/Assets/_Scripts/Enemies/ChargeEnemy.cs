@@ -37,6 +37,7 @@ public class ChargeEnemy : Enemy
                 _rb.MovePosition(MoveTarget);
             }
         }
+        transform.position = new Vector3(transform.position.x, 1, transform.position.z);
     }
 
     IEnumerator Charge()

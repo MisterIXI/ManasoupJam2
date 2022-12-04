@@ -735,6 +735,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8952874458507454832, guid: 630aab1deff581b498995c018c32ca9e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8952874458507454832, guid: 630aab1deff581b498995c018c32ca9e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.023
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 630aab1deff581b498995c018c32ca9e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -807,6 +815,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c9e819d0f94346f4e8b43b7bb01b3923, type: 2}
+    - target: {fileID: -74066559485415650, guid: 630aab1deff581b498995c018c32ca9e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -74066559485415650, guid: 630aab1deff581b498995c018c32ca9e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.036
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 630aab1deff581b498995c018c32ca9e, type: 3}
       propertyPath: m_Name
       value: Bettraum

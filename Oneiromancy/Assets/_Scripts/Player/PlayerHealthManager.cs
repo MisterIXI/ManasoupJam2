@@ -13,7 +13,18 @@ public class PlayerHealthManager : MonoBehaviour
         _playerSettings = _playerController.PlayerSettings;
         CurrentHealth = _playerSettings.MaxHealth;
     }
-
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            CurrentHealth -= 1;
+            ReferenceManager.GameManager.UpdateHealth(CurrentHealth);
+            if (CurrentHealth <= 0)
+            {
+                ReferenceManager.GameManager.SetState(GameManager.GameState.GameOver);
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         // Debug.Log("Hit with tag: " + other.tag);

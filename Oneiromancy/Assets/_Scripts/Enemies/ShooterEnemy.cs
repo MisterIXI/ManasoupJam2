@@ -26,6 +26,7 @@ public class ShooterEnemy : Enemy
             moveTarget.y = transform.position.y;
             _rb.MovePosition(moveTarget);
         }
+        transform.position = new Vector3(transform.position.x, 1, transform.position.z);
     }
     protected override void OnDamage()
     {
