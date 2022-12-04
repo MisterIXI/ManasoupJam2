@@ -17,10 +17,10 @@ public class SpawnInfo
         switch (layer)
         {
             case 1:
-                range.Wormii = new Vector2Int(0, 0);
+                range.Wormii = new Vector2Int(1, 1);
                 range.Kohl = new Vector2Int(0, 0);
                 range.Cloud = new Vector2Int(0, 0);
-                range.Alarm = new Vector2Int(1, 1);
+                range.Alarm = new Vector2Int(0, 0);
                 break;
             case 2:
                 range.Wormii = new Vector2Int(1, 1);
@@ -64,7 +64,7 @@ public class SpawnInfo
         range.Wormii = new Vector2Int(Mathf.Min(0, wormiiCount - wormiiCount / 2), Mathf.Max(0, wormiiCount));
         range.Kohl = new Vector2Int(Mathf.Min(0, kohlCount - kohlCount / 2), Mathf.Max(0, kohlCount));
         range.Cloud = new Vector2Int(Mathf.Min(0, cloudCount - cloudCount / 2), Mathf.Max(0, cloudCount));
-        range.Alarm = new Vector2Int(BossCount,BossCount);
+        range.Alarm = new Vector2Int(BossCount, BossCount);
         return range;
     }
 }

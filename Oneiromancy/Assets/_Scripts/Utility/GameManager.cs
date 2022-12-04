@@ -50,12 +50,17 @@ public class GameManager : MonoBehaviour
     }
     public void OnSceneChange(Scene oldScene, Scene newScene)
     {
-        if (newScene.name == "SceneStart")
+        // Debug.Log("Scene changed from " + oldScene.name + " to " + newScene.name);
+        Debug.Log("Scene changed from " + oldScene.buildIndex + " to " + newScene.buildIndex);
+        int mainIndex = SceneManager.GetSceneByName("SceneMain").buildIndex;
+        int gameIndex = SceneManager.GetSceneByName("SceneGame").buildIndex;
+        if (newScene.buildIndex != 1)
         {
             Debug.Log("MainMenu was activated");
             SetState(GameState.MainMenu);
         }
-        if (oldScene.name == "SceneStart" && newScene.name == "SceneGame")
+
+        if (newScene.buildIndex == 1)
         {
             Debug.Log("SceneGame was activated");
             SetState(GameState.Ingame);
