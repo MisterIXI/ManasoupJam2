@@ -31,17 +31,17 @@ MonoBehaviour:
   MaxHealth: 3
   EnemyKnockBackForce: 10
   EnemySpeed: 5
-  FollowEnemyHealthRange: {x: 10, y: 30}
-  SE_HealthRange: {x: 10, y: 25}
-  SE_ShotRange: 10
-  EnemyProjectileSpeed: 10
-  SE_ShotCooldown: 1
-  ChargeEnemyHealthRange: {x: 15, y: 25}
+  FollowEnemyHealthRange: {x: 1, y: 5}
+  SE_HealthRange: {x: 3, y: 10}
+  SE_ShotRange: 50
+  EnemyProjectileSpeed: 15
+  SE_ShotCooldown: 2
+  ChargeEnemyHealthRange: {x: 3, y: 10}
   CE_Cooldown: 2
   CE_ChargeTime: 1
   CE_ImpluseMultiplier: 5
   CE_Range: 10
-  BossHealthRange: {x: 100, y: 200}
+  BossHealthRange: {x: 100, y: 100}
   Boss_AnglePerSecond: 25
   BossAngleRange: {x: 10, y: 45}
   Boss_PauseTime: 1
