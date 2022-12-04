@@ -86,7 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sword: {fileID: 8810286191749238330}
   _swordTrail: {fileID: 4116278231671679649}
-  _magicPrefab: {fileID: 4265403699515111044, guid: 04448732315c2f848b003060428103bf, type: 3}
+  _magicPrefab: {fileID: 6895607804491841278, guid: 46ee9eba38c24f8409d3a82aac077c86, type: 3}
   _magicLaserPointer: {fileID: 9144547752143660357}
 --- !u!114 &8313837850986181748
 MonoBehaviour:
