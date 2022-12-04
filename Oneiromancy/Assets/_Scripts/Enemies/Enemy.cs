@@ -60,4 +60,8 @@ public abstract class Enemy : MonoBehaviour
     {
         _rb.AddForce(direction * force, ForceMode.Impulse);
     }
+
+    private void OnDestroy() {
+        _gameManager.EnemyKilled(this);
+    }
 }

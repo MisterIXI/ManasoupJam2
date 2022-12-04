@@ -86,4 +86,19 @@ public class PlayerSettings : ScriptableObject
     [Header("Camera")]
     public Vector3 CameraOffset = new Vector3(0, 8f, -5);
     #endregion
-}
+
+    #region Portal
+    [Header("Portal")]
+    [Range(1f, 5f)] public float PortalAnimDuration = 2f;
+    [Range(-5, 15f)] public float PortalMaxPosition = 5f;
+    [Range(-15f, 0f)] public float PortalMinPosition = -5f;
+    public bool PortalGizmos = false;
+    #endregion
+    
+    #region Spawning
+    [Header("Spawning")]
+    public bool ShowSpawnGizmos = false;
+    [Range(0f,50f)] public float MinSpawnDistance = 10f;
+    [Range(5f, 300f)] public float MaxSpawnDistance = 20f;
+    #endregion 
+    }
