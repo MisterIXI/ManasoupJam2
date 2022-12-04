@@ -23,7 +23,7 @@ MonoBehaviour:
   MagicDamage: 1
   MagicCooldown: 1
   MagicProjectileSpeed: 10
-  BoundsLength: 60
+  BoundsLength: 143.7
   BlockSlowdown: 1
   BlockColliderSize: 1
   MaxProjectiles: 8

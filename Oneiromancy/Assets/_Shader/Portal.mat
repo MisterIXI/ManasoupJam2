@@ -28,11 +28,11 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _ChangeSpeed: 0.31
-    - _Density: 4.7
-    - _DissolveAmount: 1.27
-    - _TwirlSpeed: 0.5
-    - _TwirlStrength: 38.11
+    - _ChangeSpeed: 0.16
+    - _Density: 5.58
+    - _DissolveAmount: -0.13
+    - _TwirlSpeed: 0.26
+    - _TwirlStrength: 35.58
     m_Colors:
     - _MainColor: {r: 2.6116529, g: 0.88878244, b: 0.5059223, a: 1}
   m_BuildTextureStacks: []
