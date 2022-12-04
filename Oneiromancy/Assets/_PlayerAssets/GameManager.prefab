@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _GameOverScreenPrefab: {fileID: 2371813453292017874, guid: b2a1d4d6466f57349bffcab6b0c9db4a, type: 3}
+  _IngameUIPrefab: {fileID: 5016215119317453058, guid: 83f5b2971e9a48b4e92c6c3048227cd7, type: 3}
   PlayerSettings: {fileID: 11400000, guid: 9214f473ff60c0c429fed420dd9f286d, type: 2}
   _KohlPrefab: {fileID: 9144784773358939731, guid: 06e59c053ecad67468bb8f2aa83c54b3, type: 3}
   _WormiiPrefab: {fileID: 2412992308850408417, guid: 18b93946c54384d4aaa47f7a3de9a748, type: 3}

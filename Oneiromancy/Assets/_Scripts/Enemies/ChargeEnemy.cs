@@ -11,7 +11,10 @@ public class ChargeEnemy : Enemy
         CurrentHealth = Random.Range(_playerSettings.ChargeEnemyHealthRange.x, _playerSettings.ChargeEnemyHealthRange.y + 1);
         _rb.centerOfMass = Vector3.zero;
     }
+    protected override void OnDamage()
+    {
 
+    }
     public override void EnemyTick()
     {
         float Distance = Vector3.Distance(transform.position, _playerTransform.position);

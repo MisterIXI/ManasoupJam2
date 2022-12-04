@@ -20,32 +20,34 @@ public class UiScript : MonoBehaviour
     public Image HP2;
     public Image HP3;
     public int CurrentHealth = 3;   // HIER DAS MOMENTANE LEBEN EINFÜGEN
-
+    [SerializeField] private Slider _bossSlider;
     public Text StageText;
     public int StageNr = 1; // HIER WIEDER DIE STAGE(LVL) EINFÜGEN
+    public int CurrentBossHealth;
+    public int MaxBossHealth;
 
-
-    void Update()
+    void FixedUpdate()
     {
         UpdateHpBar();
         UpdateStage();
+        UpdateBossHealthBar();
     }
 
     void UpdateHpBar()   // shows/hides hearth based on hp
     {
-        if(CurrentHealth == 3)
+        if (CurrentHealth == 3)
         {
             HP1.enabled = true;
             HP2.enabled = true;
             HP3.enabled = true;
         }
-        else if(CurrentHealth == 2)
+        else if (CurrentHealth == 2)
         {
             HP1.enabled = true;
             HP2.enabled = true;
             HP3.enabled = false;
         }
-        else if(CurrentHealth == 1)
+        else if (CurrentHealth == 1)
         {
             HP1.enabled = true;
             HP2.enabled = false;
@@ -62,5 +64,15 @@ public class UiScript : MonoBehaviour
     void UpdateStage() // updates Stage lvl
     {
         StageText.text = StageNr.ToString(); // HIER WIEDER DIE STAGE(LVL) EINFÜGEN
+    }
+
+    public void ToggleBossHealthBar(bool toggle)
+    {
+        _bossSlider.gameObject.SetActive(toggle);
+    }
+    private void UpdateBossHealthBar()
+    {
+        _bossSlider.value = CurrentBossHealth;
+        _bossSlider.maxValue = MaxBossHealth;
     }
 }

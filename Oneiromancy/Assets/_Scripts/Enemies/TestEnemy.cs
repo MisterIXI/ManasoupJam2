@@ -15,7 +15,7 @@ public class TestEnemy : MonoBehaviour
     }
 
     private void Update()
-    {   
+    {
         // rotate towards player
         transform.LookAt(_playerTransform);
         if (Time.time - _lastShootTime > 0.1f)

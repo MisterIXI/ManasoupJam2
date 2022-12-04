@@ -48,6 +48,7 @@ public abstract class Enemy : MonoBehaviour
             direction.Normalize();
             KnockBack(direction, _playerSettings.EnemyKnockBackForce);
             Destroy(other.gameObject);
+            OnDamage();
         }
         if (other.CompareTag("Sword"))
         {
@@ -55,6 +56,7 @@ public abstract class Enemy : MonoBehaviour
             Vector3 direction = transform.position - other.transform.position;
             direction.Normalize();
             KnockBack(direction, _playerSettings.EnemyKnockBackForce);
+            OnDamage();
         }
     }
 
@@ -62,8 +64,9 @@ public abstract class Enemy : MonoBehaviour
     {
         _rb.AddForce(direction * force, ForceMode.Impulse);
     }
-
-    private void OnDestroy() {
+    abstract protected void OnDamage();
+    private void OnDestroy()
+    {
         _gameManager.EnemyKilled(this);
     }
 }

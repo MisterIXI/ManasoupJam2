@@ -27,7 +27,10 @@ public class ShooterEnemy : Enemy
             _rb.MovePosition(moveTarget);
         }
     }
+    protected override void OnDamage()
+    {
 
+    }
     private void Shoot()
     {
         if (Time.time - _lastShotTime > _playerSettings.SE_ShotCooldown)

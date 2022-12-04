@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject _GameOverScreenPrefab;
+    [SerializeField] private GameObject _IngameUIPrefab;
     [SerializeField] public PlayerSettings PlayerSettings;
     [SerializeField] private GameObject _KohlPrefab;
     [SerializeField] private GameObject _WormiiPrefab;
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameState CurrentState { get; private set; }
     public List<Enemy> Enemies = new List<Enemy>();
     public int CurrentLayer { get; private set; } = 1;
-
+    private UiScript _ingameUI;
     public enum GameState
     {
         MainMenu,
@@ -69,6 +70,10 @@ public class GameManager : MonoBehaviour
         OnStateChange(oldState, CurrentState);
         if (CurrentState == GameState.Ingame)
         {
+            if (oldState == GameState.MainMenu)
+            {
+                _ingameUI = Instantiate(_IngameUIPrefab).GetComponent<UiScript>();
+            }
             ReferenceManager.PortalDoor.PlayDespawnAnimation();
             SpawnEnemies();
         }
@@ -83,11 +88,15 @@ public class GameManager : MonoBehaviour
         if (CurrentState == GameState.GameOver)
         {
             Time.timeScale = 0;
+            Destroy(_ingameUI.gameObject);
             Instantiate(_GameOverScreenPrefab);
             ReferenceManager.PlayerController.UnSubscribeToInputEvents();
         }
     }
-
+    public void UpdateHealth(int health)
+    {
+        _ingameUI.CurrentHealth = health;
+    }
     private void SpawnEnemies()
     {
         SpawnInfo.EnemyCountRange enemySpawnRanges = SpawnInfo.GetRange(CurrentLayer);
@@ -100,6 +109,7 @@ public class GameManager : MonoBehaviour
         SpawnLoop(_KohlPrefab, kohlCount);
         SpawnLoop(_CloudPrefab, cloudCount);
         SpawnLoop(_AlarmPrefab, alarmCount);
+
     }
 
     private void SpawnLoop(GameObject prefab, int count)
@@ -116,7 +126,35 @@ public class GameManager : MonoBehaviour
     public void AdvanceLayer()
     {
         CurrentLayer++;
+        _ingameUI.StageNr = CurrentLayer;
         SetState(GameState.Ingame);
+    }
+
+    public void SetBossHealthBarMax()
+    {
+        int maxHealth = 0;
+        foreach (Enemy enemy in Enemies)
+        {
+            if (enemy is ClockBoss)
+            {
+                maxHealth += enemy.CurrentHealth;
+            }
+        }
+        _ingameUI.MaxBossHealth = maxHealth;
+        _ingameUI.CurrentBossHealth = maxHealth;
+        _ingameUI.ToggleBossHealthBar(true);
+    }
+    public void UpdateBossHealthBar()
+    {
+        int currentHealth = 0;
+        foreach (Enemy enemy in Enemies)
+        {
+            if (enemy is ClockBoss)
+            {
+                currentHealth += enemy.CurrentHealth;
+            }
+        }
+        _ingameUI.CurrentBossHealth = currentHealth;
     }
 
     public void EnemyKilled(Enemy enemy)
@@ -124,6 +162,7 @@ public class GameManager : MonoBehaviour
         Enemies.Remove(enemy);
         if (Enemies.Count == 0)
         {
+            _ingameUI.ToggleBossHealthBar(false);
             SetState(GameState.Portal);
         }
     }

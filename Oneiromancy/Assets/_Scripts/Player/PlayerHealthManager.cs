@@ -22,6 +22,7 @@ public class PlayerHealthManager : MonoBehaviour
             CurrentHealth -= 1;
             Debug.Log("Hit! CurrentHealth: " + CurrentHealth);
             Destroy(other.gameObject);
+            ReferenceManager.GameManager.UpdateHealth(CurrentHealth);
             if (CurrentHealth <= 0)
             {
                 ReferenceManager.GameManager.SetState(GameManager.GameState.GameOver);

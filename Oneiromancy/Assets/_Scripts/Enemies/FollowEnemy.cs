@@ -21,5 +21,8 @@ public class FollowEnemy : Enemy
         moveTarget.y = transform.position.y;
         _rb.MovePosition(moveTarget);
     }
+    protected override void OnDamage()
+    {
 
+    }
 }
