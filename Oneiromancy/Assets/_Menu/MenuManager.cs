@@ -11,9 +11,11 @@ using UnityEngine.SceneManagement;
     #   It is the logic for the Buttons in the Main Menu.                   #
     #-----------------------------------------------------------------------# 
     #   Line 42 -> StartGame(): Starts the Game                             #
-    #   Line 48 -> ToggleControls(): Hides Credits and shows Controls       #
+    #   Line 48 -> ToggleControls(): Hides tabs and shows Controls          #
     #                                or hides itself if open                #
-    #   Line 64 -> ToggleCredits(): Hides Controls and shows Credits        #
+    #   Line 64 -> ToggleCredits(): Hides tabs and shows Credits            #
+    #                               or hides itself if open                 #
+    #   Line 64 -> ToggleResources(): Hides tabs and shows Resources        #
     #                               or hides itself if open                 #
     #   Line 79 -> ExitGame(): Exits Game                                   #       
     #########################################################################
@@ -25,10 +27,12 @@ public class MenuManager : MonoBehaviour
     public Button PlayButton;
     public Button ControlsButton;
     public Button CreditsButton;
+    public Button ResourceButton;
     public Button ExitButton;
 
     public GameObject ControlsPanel;
     public GameObject CreditsPanel;
+    public GameObject ResourcesPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +40,7 @@ public class MenuManager : MonoBehaviour
         PlayButton.onClick.AddListener(StartGame);
         ControlsButton.onClick.AddListener(ToggleControls);
         CreditsButton.onClick.AddListener(ToggleCredits);
+        ResourceButton.onClick.AddListener(ToggleResources);
         ExitButton.onClick.AddListener(ExitGame);
     }
 
@@ -51,6 +56,7 @@ public class MenuManager : MonoBehaviour
         {
             Debug.Log("Controls Button Pressed --> Showing Controls.");
             CreditsPanel.SetActive(false);
+            ResourcesPanel.SetActive(false);
             ControlsPanel.SetActive(true);
         }
         else
@@ -67,12 +73,28 @@ public class MenuManager : MonoBehaviour
         {
             Debug.Log("Credits Button Pressed --> Showing Credits.");
             ControlsPanel.SetActive(false);
+            ResourcesPanel.SetActive(false);
             CreditsPanel.SetActive(true);
         }
         else
         {
             Debug.Log("Credits Button Pressed --> Hiding Credits.");
             CreditsPanel.SetActive(false);
+        } 
+    }
+    void ToggleResources() // Hides Controls and shows Credits / hides itself if open
+    {
+        if(ResourcesPanel.activeSelf == false)
+        {
+            Debug.Log("Resources Button Pressed --> Showing Resources.");
+            ControlsPanel.SetActive(false);
+            CreditsPanel.SetActive(false);
+            ResourcesPanel.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Resources Button Pressed --> Hiding Resources.");
+            ResourcesPanel.SetActive(false);
         } 
     }
 
