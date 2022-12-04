@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-    private void Awake()
-    {
-        ReferenceManager.GameManager = this;
-    }
+
     [SerializeField] private PlayerSettings _playerSettings;
     [SerializeField] private GameObject _KohlPrefab;
     [SerializeField] private GameObject _WormiiPrefab;
@@ -26,7 +24,41 @@ public class GameManager : MonoBehaviour
         Paused,
         GameOver
     }
+    private void Awake()
+    {
+        if (ReferenceManager.GameManager != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        ReferenceManager.GameManager = this;
+        DontDestroyOnLoad(gameObject);
+        SceneManager.activeSceneChanged += OnSceneChange;
+    }
 
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "SceneGame")
+        {
+            SetState(GameState.Ingame);
+        }
+        else
+        {
+            CurrentState = GameState.MainMenu;
+        }
+    }
+    public void OnSceneChange(Scene oldScene, Scene newScene)
+    {
+        if (newScene.name == "SceneStart")
+        {
+            Debug.Log("MainMenu was activated");
+        }
+        if (newScene.name == "SceneGame")
+        {
+            Debug.Log("SceneGame was activated");
+        }
+
+    }
     public void SetState(GameState state)
     {
         Debug.Log("Gamestate changed from " + CurrentState + " to " + state);
@@ -35,12 +67,18 @@ public class GameManager : MonoBehaviour
         OnStateChange(oldState, CurrentState);
         if (CurrentState == GameState.Ingame)
         {
-            ReferenceManager.PortalDoor.PlaySpawnAnimation();
+            ReferenceManager.PortalDoor.PlayDespawnAnimation();
+            SpawnEnemies();
+        }
+        if (CurrentState == GameState.MainMenu)
+        {
+            ResetValues();
         }
     }
 
-    private void SpawnEnemies(SpawnInfo.EnemyCountRange enemySpawnRanges)
+    private void SpawnEnemies()
     {
+        SpawnInfo.EnemyCountRange enemySpawnRanges = SpawnInfo.GetRange(CurrentLayer);
         int wormiiCount = UnityEngine.Random.Range(enemySpawnRanges.Wormii.x, enemySpawnRanges.Wormii.y + 1);
         int kohlCount = UnityEngine.Random.Range(enemySpawnRanges.Kohl.x, enemySpawnRanges.Kohl.y + 1);
         int cloudCount = UnityEngine.Random.Range(enemySpawnRanges.Cloud.x, enemySpawnRanges.Cloud.y + 1);
@@ -66,7 +104,7 @@ public class GameManager : MonoBehaviour
     public void AdvanceLayer()
     {
         SetState(GameState.Ingame);
-        CurrentLayer++; 
+        CurrentLayer++;
     }
 
     public void EnemyKilled(Enemy enemy)
@@ -77,6 +115,24 @@ public class GameManager : MonoBehaviour
             SetState(GameState.Portal);
         }
     }
+    private void ResetValues()
+    {
+        CurrentLayer = 1;
+        foreach (Enemy enemy in Enemies)
+        {
+            Destroy(enemy.gameObject);
+        }
+        Enemies.Clear();
+    }
 
-
+    private void OnDrawGizmos()
+    {
+        if (_playerSettings != null && _playerSettings.ShowSpawnGizmos)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(Vector3.zero, _playerSettings.MinSpawnDistance);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(Vector3.zero, _playerSettings.MaxSpawnDistance);
+        }
+    }
 }

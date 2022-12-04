@@ -42,3 +42,10 @@ MonoBehaviour:
   CE_ImpluseMultiplier: 30
   CE_Range: 10
   CameraOffset: {x: 0, y: 16.85, z: -11}
+  PortalAnimDuration: 2
+  PortalMaxPosition: 5
+  PortalMinPosition: -11.9
+  PortalGizmos: 1
+  ShowSpawnGizmos: 1
+  MinSpawnDistance: 25.9
+  MaxSpawnDistance: 70

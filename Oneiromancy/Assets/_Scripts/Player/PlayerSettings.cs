@@ -97,6 +97,7 @@ public class PlayerSettings : ScriptableObject
     
     #region Spawning
     [Header("Spawning")]
+    public bool ShowSpawnGizmos = false;
     [Range(0f,50f)] public float MinSpawnDistance = 10f;
     [Range(5f, 70f)] public float MaxSpawnDistance = 20f;
     #endregion 
