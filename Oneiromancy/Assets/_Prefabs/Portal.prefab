@@ -5199,6 +5199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116e99bb6d336914a8d358cf85a23a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _portalCollider: {fileID: 7903617245669300151}
   _spawnParticles: {fileID: 0}
 --- !u!1 &6067561271462426611
 GameObject:

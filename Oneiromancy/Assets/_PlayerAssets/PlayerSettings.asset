@@ -23,7 +23,7 @@ MonoBehaviour:
   MagicDamage: 1
   MagicCooldown: 1
   MagicProjectileSpeed: 10
-  BoundsLength: 143.7
+  BoundsLength: 40
   BlockSlowdown: 1
   BlockColliderSize: 1
   MaxProjectiles: 8
@@ -38,14 +38,14 @@ MonoBehaviour:
   SE_ShotCooldown: 1
   ChargeEnemyHealthRange: {x: 15, y: 25}
   CE_Cooldown: 2
-  CE_ChargeTime: 1.5
-  CE_ImpluseMultiplier: 30
+  CE_ChargeTime: 1
+  CE_ImpluseMultiplier: 5
   CE_Range: 10
   CameraOffset: {x: 0, y: 16.85, z: -11}
   PortalAnimDuration: 2
-  PortalMaxPosition: 5
-  PortalMinPosition: -11.9
+  PortalMaxPosition: 2
+  PortalMinPosition: -10
   PortalGizmos: 1
   ShowSpawnGizmos: 1
-  MinSpawnDistance: 20.5
-  MaxSpawnDistance: 106
+  MinSpawnDistance: 5.4
+  MaxSpawnDistance: 28

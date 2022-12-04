@@ -5,8 +5,8 @@ using System;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-
-    [SerializeField] private PlayerSettings _playerSettings;
+    [SerializeField] private GameObject _GameOverScreenPrefab;
+    [SerializeField] public PlayerSettings PlayerSettings;
     [SerializeField] private GameObject _KohlPrefab;
     [SerializeField] private GameObject _WormiiPrefab;
     [SerializeField] private GameObject _CloudPrefab;
@@ -52,10 +52,12 @@ public class GameManager : MonoBehaviour
         if (newScene.name == "SceneStart")
         {
             Debug.Log("MainMenu was activated");
+            SetState(GameState.MainMenu);
         }
         if (newScene.name == "SceneGame")
         {
             Debug.Log("SceneGame was activated");
+            SetState(GameState.Ingame);
         }
 
     }
@@ -73,6 +75,16 @@ public class GameManager : MonoBehaviour
         if (CurrentState == GameState.MainMenu)
         {
             ResetValues();
+            if (oldState == GameState.GameOver)
+            {
+                Time.timeScale = 1;
+            }
+        }
+        if (CurrentState == GameState.GameOver)
+        {
+            Time.timeScale = 0;
+            Instantiate(_GameOverScreenPrefab);
+            ReferenceManager.PlayerController.UnSubscribeToInputEvents();
         }
     }
 
@@ -95,16 +107,16 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             float randomAngle = UnityEngine.Random.Range(0, 360);
-            float randomDistance = UnityEngine.Random.Range(_playerSettings.MinSpawnDistance, _playerSettings.MaxSpawnDistance);
-            Vector3 spawnPosition = new Vector3(Mathf.Cos(randomAngle * Mathf.Deg2Rad) * randomDistance, 0, Mathf.Sin(randomAngle * Mathf.Deg2Rad) * randomDistance);
+            float randomDistance = UnityEngine.Random.Range(PlayerSettings.MinSpawnDistance, PlayerSettings.MaxSpawnDistance);
+            Vector3 spawnPosition = new Vector3(Mathf.Cos(randomAngle * Mathf.Deg2Rad) * randomDistance, 1, Mathf.Sin(randomAngle * Mathf.Deg2Rad) * randomDistance);
             GameObject enemy = Instantiate(prefab, spawnPosition, Quaternion.identity);
             Enemies.Add(enemy.GetComponent<Enemy>());
         }
     }
     public void AdvanceLayer()
     {
-        SetState(GameState.Ingame);
         CurrentLayer++;
+        SetState(GameState.Ingame);
     }
 
     public void EnemyKilled(Enemy enemy)
@@ -127,12 +139,12 @@ public class GameManager : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (_playerSettings != null && _playerSettings.ShowSpawnGizmos)
+        if (PlayerSettings != null && PlayerSettings.ShowSpawnGizmos)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(Vector3.zero, _playerSettings.MinSpawnDistance);
+            Gizmos.DrawWireSphere(Vector3.zero, PlayerSettings.MinSpawnDistance);
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(Vector3.zero, _playerSettings.MaxSpawnDistance);
+            Gizmos.DrawWireSphere(Vector3.zero, PlayerSettings.MaxSpawnDistance);
         }
     }
 }
