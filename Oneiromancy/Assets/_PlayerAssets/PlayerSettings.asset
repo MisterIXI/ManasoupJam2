@@ -41,6 +41,11 @@ MonoBehaviour:
   CE_ChargeTime: 1
   CE_ImpluseMultiplier: 5
   CE_Range: 10
+  BossHealthRange: {x: 100, y: 200}
+  Boss_AnglePerSecond: 25
+  BossAngleRange: {x: 10, y: 45}
+  Boss_PauseTime: 1
+  Boss_ShotDelay: 0.05
   CameraOffset: {x: 0, y: 16.85, z: -11}
   PortalAnimDuration: 2
   PortalMaxPosition: 2

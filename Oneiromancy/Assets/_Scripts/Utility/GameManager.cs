@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("MainMenu was activated");
             SetState(GameState.MainMenu);
         }
-        if (newScene.name == "SceneGame")
+        if (oldScene.name == "SceneStart" && newScene.name == "SceneGame")
         {
             Debug.Log("SceneGame was activated");
             SetState(GameState.Ingame);

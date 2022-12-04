@@ -80,6 +80,12 @@ public class PlayerSettings : ScriptableObject
     [Range(1, 30)] public float CE_ImpluseMultiplier = 1;
     [Range(5f, 50f)] public float CE_Range = 15f;
 
+    [Header("Boss")]
+    public Vector2Int BossHealthRange = new Vector2Int(100, 200);
+    [Range(1f, 50f)] public float Boss_AnglePerSecond = 10f;
+    public Vector2 BossAngleRange = new Vector2(10f,45f);
+    [Range(0f, 5f)] public float Boss_PauseTime = 1f;
+    [Range(0f, 1f)] public float Boss_ShotDelay = 0.1f;
     #endregion
 
     #region Camera
@@ -94,11 +100,11 @@ public class PlayerSettings : ScriptableObject
     [Range(-15f, 0f)] public float PortalMinPosition = -5f;
     public bool PortalGizmos = false;
     #endregion
-    
+
     #region Spawning
     [Header("Spawning")]
     public bool ShowSpawnGizmos = false;
-    [Range(0f,50f)] public float MinSpawnDistance = 10f;
+    [Range(0f, 50f)] public float MinSpawnDistance = 10f;
     [Range(5f, 300f)] public float MaxSpawnDistance = 20f;
-    #endregion 
-    }
+    #endregion
+}

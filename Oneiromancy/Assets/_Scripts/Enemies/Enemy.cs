@@ -15,7 +15,9 @@ public abstract class Enemy : MonoBehaviour
     {
         _playerTransform = ReferenceManager.PlayerController.transform;
         _gameManager = ReferenceManager.GameManager;
-        _playerSettings = ReferenceManager.PlayerController.PlayerSettings;
+        _playerSettings = ReferenceManager.GameManager.PlayerSettings;
+        Debug.Log("GameManager: " + _gameManager);
+        Debug.Log("PlayerSettings: " + _playerSettings);
         _rb = GetComponent<Rigidbody>();
         // default Health 
         CurrentHealth = 10;
