@@ -34,7 +34,7 @@ public abstract class Enemy : MonoBehaviour
         GetComponent<Animator>().Play(1);
         if (CurrentHealth <= 0)
         {
-            GetComponentInChildren<ParticleSystem>().Play(false);
+            GetComponentInChildren<ParticleSystem>().Play(true);
             Destroy(gameObject);
             // TODO: maybe spawn a heart?
         }
