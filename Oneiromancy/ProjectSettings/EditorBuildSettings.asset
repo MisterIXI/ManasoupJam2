@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/DO_NOT_TOUCH_Yannikscene.unity
+    guid: e03cea6a00a363342b81e4a563a12aa4
   m_configObjects: {}
