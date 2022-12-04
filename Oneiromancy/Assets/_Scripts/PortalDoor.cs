@@ -6,6 +6,7 @@ public class PortalDoor : MonoBehaviour
 {
     private PlayerSettings _playerSettings;
     private GameManager _gameManager;
+    private Collider _portalCollider;
     [SerializeField] private ParticleSystem _spawnParticles;
     private float _startTime;
     private float _startY;
@@ -24,6 +25,7 @@ public class PortalDoor : MonoBehaviour
 
     private void Start()
     {
+        _portalCollider = GetComponent<Collider>();
         _playerSettings = ReferenceManager.PlayerController.PlayerSettings;
         _gameManager = ReferenceManager.GameManager;
         _gameManager.OnStateChange += OnStateChange;
@@ -36,6 +38,13 @@ public class PortalDoor : MonoBehaviour
             float t = (Time.time - _startTime) / _playerSettings.PortalAnimDuration;
             _playerSettings.Lerp(t, PlayerSettings.LerpType.EaseInOut);
             float newY = Mathf.Lerp(_startY, _targetY, t);
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+            if (t >= 1)
+            {
+                if(animState == state.Spawning)
+                    _portalCollider.enabled = true;
+                animState = state.Idle;
+            }
         }
     }
     public void PlaySpawnAnimation()
@@ -49,6 +58,7 @@ public class PortalDoor : MonoBehaviour
 
     public void PlayDespawnAnimation()
     {
+        _portalCollider.enabled = false;
         _startTime = Time.time;
         _startY = transform.position.y;
         _targetY = _playerSettings.PortalMinPosition;

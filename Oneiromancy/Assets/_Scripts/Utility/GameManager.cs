@@ -96,15 +96,15 @@ public class GameManager : MonoBehaviour
         {
             float randomAngle = UnityEngine.Random.Range(0, 360);
             float randomDistance = UnityEngine.Random.Range(_playerSettings.MinSpawnDistance, _playerSettings.MaxSpawnDistance);
-            Vector3 spawnPosition = new Vector3(Mathf.Cos(randomAngle * Mathf.Deg2Rad) * randomDistance, 0, Mathf.Sin(randomAngle * Mathf.Deg2Rad) * randomDistance);
+            Vector3 spawnPosition = new Vector3(Mathf.Cos(randomAngle * Mathf.Deg2Rad) * randomDistance, 1, Mathf.Sin(randomAngle * Mathf.Deg2Rad) * randomDistance);
             GameObject enemy = Instantiate(prefab, spawnPosition, Quaternion.identity);
             Enemies.Add(enemy.GetComponent<Enemy>());
         }
     }
     public void AdvanceLayer()
     {
-        SetState(GameState.Ingame);
         CurrentLayer++;
+        SetState(GameState.Ingame);
     }
 
     public void EnemyKilled(Enemy enemy)

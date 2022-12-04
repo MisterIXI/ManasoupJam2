@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private bool _isReticleMouseMode = true;
     private Rigidbody _rb;
     private Vector3 _actualMovement;
+    private GameManager _gameManager;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        _gameManager = ReferenceManager.GameManager;
         _rb = GetComponent<Rigidbody>();
         PlayerAction = GetComponent<PlayerAction>();
         SubscribeToInputEvents();
@@ -136,6 +138,12 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    private void OnTriggerEnter(Collider other) {
+        if(other.CompareTag("Portal"))
+        {
+            _gameManager.AdvanceLayer();
+        }
+    }
     #region Input Subscriptions
     private void SubscribeToInputEvents()
     {
