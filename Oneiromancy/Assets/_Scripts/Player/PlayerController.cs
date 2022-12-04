@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private bool _isReticleMouseMode = true;
     private Rigidbody _rb;
     private Vector3 _actualMovement;
+    private GameManager _gameManager;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        _gameManager = ReferenceManager.GameManager;
         _rb = GetComponent<Rigidbody>();
         PlayerAction = GetComponent<PlayerAction>();
         SubscribeToInputEvents();
@@ -135,9 +137,20 @@ public class PlayerController : MonoBehaviour
     {
     }
     #endregion
-
+    private void OnTriggerExit(Collider other) {
+        if (other.CompareTag("Bounds"))
+        {
+            _gameManager.SetState(GameManager.GameState.GameOver);
+        }
+    }
+    private void OnTriggerEnter(Collider other) {
+        if(other.CompareTag("Portal"))
+        {
+            _gameManager.AdvanceLayer();
+        }
+    }
     #region Input Subscriptions
-    private void SubscribeToInputEvents()
+    public void SubscribeToInputEvents()
     {
         var input = GetComponent<PlayerInput>().currentActionMap;
         input["Move"].started += this.OnMove;
@@ -157,7 +170,7 @@ public class PlayerController : MonoBehaviour
         input["Block"].canceled += PlayerAction.Block;
     }
 
-    private void UnSubscribeToInputEvents()
+    public void UnSubscribeToInputEvents()
     {
         var input = GetComponent<PlayerInput>().currentActionMap;
         input["Move"].started -= this.OnMove;
