@@ -42,7 +42,7 @@ public class MenuManager : MonoBehaviour
     void StartGame()   // Starts the Game
     {
         Debug.Log("Play Button Pressed --> Starting Game.");
-        SceneManager.LoadScene("YannikScene");
+        SceneManager.LoadScene(1);
     }
 
     void ToggleControls() // Hides Credits and shows Controls / hides itself if open
