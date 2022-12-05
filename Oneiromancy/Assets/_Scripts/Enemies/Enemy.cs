@@ -31,11 +31,11 @@ public abstract class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         CurrentHealth -= damage;
-        GetComponent<Animator>().Play(1);
+        gameObject.GetComponentInChildren<Animator>().Play(1);
         if (CurrentHealth <= 0)
         {
-            GetComponentInChildren<ParticleSystem>().Play(true);
-            Destroy(gameObject);
+            gameObject.GetComponentInChildren<ParticleSystem>().Play(true);
+            Destroy(gameObject,3);
             // TODO: maybe spawn a heart?
         }
     }

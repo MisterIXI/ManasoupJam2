@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 _actualMovement;
     private GameManager _gameManager;
+    private PlayerAnimation _playerAnim;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
         _gameManager = ReferenceManager.GameManager;
         _rb = GetComponent<Rigidbody>();
         PlayerAction = GetComponent<PlayerAction>();
+        _playerAnim = GetComponentInChildren<PlayerAnimation>();
         SubscribeToInputEvents();
     }
 
@@ -39,7 +41,13 @@ public class PlayerController : MonoBehaviour
         // ease in movement
         _actualMovement = Vector3.MoveTowards(_actualMovement, moveDirection, PlayerSettings.MoveAcceleration * Time.fixedDeltaTime);
         // moveDirection = PlayerAction.AdjustMovement(moveDirection);
-        
+        if(_actualMovement != Vector3.zero)
+        {
+            _playerAnim.PlayerRunning();
+        }
+        else{
+            _playerAnim.PlayerIdle();
+        }
         _rb.MovePosition(transform.position + _actualMovement);
         if (_isReticleMouseMode)
             _aimInput += _actualMovement;

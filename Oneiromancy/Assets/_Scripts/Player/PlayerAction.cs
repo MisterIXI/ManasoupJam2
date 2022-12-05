@@ -8,10 +8,11 @@ public class PlayerAction : MonoBehaviour
 
 
     private PlayerSettings _playerSettings;
-
+    private PlayerAnimation _playerAnim;
     private void Start()
     {
         _playerSettings = ReferenceManager.PlayerController.PlayerSettings;
+        _playerAnim = GetComponent<PlayerAnimation>();
         SwordSetup();
         MagicSetup();
     }
@@ -59,7 +60,10 @@ public class PlayerAction : MonoBehaviour
     private void SwordUpdate()
     {
         if (_isSlashing)
+        {
+            _playerAnim.PlayerAttack();
             SlashIncrement();
+        }
     }
     public void Slash(InputAction.CallbackContext context)
     {
@@ -124,6 +128,7 @@ public class PlayerAction : MonoBehaviour
     #endregion
     #region Magic
     [SerializeField] private GameObject _magicPrefab;
+    [SerializeField] private GameObject _smokePrefab;
     [SerializeField] private GameObject _magicLaserPointer;
     private int _magicCount;
     private void MagicSetup()
@@ -142,12 +147,17 @@ public class PlayerAction : MonoBehaviour
         }
         if (context.canceled)
         {
+            _playerAnim.PlayerCast();
             _magicLaserPointer.SetActive(false);
             if (_magicCount < _playerSettings.MaxProjectiles)
             {
                 Vector3 spawnPoint = transform.position + transform.forward;
                 GameObject magic = Instantiate(_magicPrefab, spawnPoint, transform.rotation);
                 _magicCount++;
+            }
+            else{
+                Vector3 spawnPoint = transform.position + transform.forward;
+                GameObject magic = Instantiate(_smokePrefab, spawnPoint, transform.rotation);
             }
         }
     }

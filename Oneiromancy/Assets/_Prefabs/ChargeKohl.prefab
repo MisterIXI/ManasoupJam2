@@ -163,6 +163,10 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.0025364957
       objectReference: {fileID: 0}
+    - target: {fileID: 1901185054687740086, guid: c7f610e798065da458ed0e75ce864e5e, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2899615015835958214, guid: c7f610e798065da458ed0e75ce864e5e, type: 3}
       propertyPath: m_Name
       value: Explosion
