@@ -43,11 +43,11 @@ public class PlayerController : MonoBehaviour
         // moveDirection = PlayerAction.AdjustMovement(moveDirection);
         if(_actualMovement != Vector3.zero)
         {
-            Debug.Log("PlayerRunning");
+            // Debug.Log("PlayerRunning");
             _playerAnim.PlayerRunning();
         }
         else{
-            Debug.Log("PlayerIdle");
+            // Debug.Log("PlayerIdle");
             _playerAnim.PlayerIdle();
         }
         _rb.MovePosition(transform.position + _actualMovement);

@@ -12,7 +12,7 @@ public abstract class Enemy : MonoBehaviour
     public int CurrentHealth { get; protected set; }
     public int healthItemCounter {get;protected set;}
     public string damageAnim{get; protected set;}
-    
+    [SerializeField]private Transform _particlesystem;
     private void Start()
     {
         _playerTransform = ReferenceManager.PlayerController.transform;
@@ -46,7 +46,13 @@ public abstract class Enemy : MonoBehaviour
                 Instantiate(_playerSettings.heartPrefab, gameObject.transform.position, Quaternion.identity);
                 healthItemCounter =0;
             }
-            Destroy(gameObject,1);
+            if(_particlesystem !=null)
+            {
+                _particlesystem.parent = null;
+                _particlesystem.position= transform.position;
+                Destroy(_particlesystem.gameObject,2);
+            }
+                Destroy(gameObject);
             
         }
     }
@@ -78,7 +84,7 @@ public abstract class Enemy : MonoBehaviour
         _rb.AddForce(direction * force, ForceMode.Impulse);
     }
     abstract protected void OnDamage();
-    private void OnDestroy()
+    void OnDestroy()
     {
         _gameManager.EnemyKilled(this);
     }

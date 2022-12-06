@@ -121,9 +121,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104592411416850506}
-  m_LocalRotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 4.9999995, y: 4.999999, z: 4.9999995}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9080509528591408219}
@@ -5240,10 +5240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7297927538083688426}
-  - component: {fileID: 6086016156927002403}
   - component: {fileID: 476298891601880421}
-  - component: {fileID: 7949048843261058140}
-  - component: {fileID: 4160826860320467946}
   m_Layer: 0
   m_Name: ClockBoss
   m_TagString: Enemy
@@ -5270,22 +5267,6 @@ Transform:
   m_Father: {fileID: 8213428072468943946}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!54 &6086016156927002403
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7929892000461272400}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 2
-  m_AngularDrag: 5
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 4
-  m_CollisionDetection: 0
 --- !u!95 &476298891601880421
 Animator:
   serializedVersion: 4
@@ -5306,32 +5287,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7949048843261058140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7929892000461272400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 152026cf5581dbd44a6770e57ea68aa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ShotPrefab: {fileID: 4413988497694516666, guid: e1b373bab77901140a31be9bcc827ec6, type: 3}
---- !u!65 &4160826860320467946
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7929892000461272400}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.49, y: 2.51, z: 2.23}
-  m_Center: {x: 0, y: 1.39, z: 0}
 --- !u!1 &8840607833546018544
 GameObject:
   m_ObjectHideFlags: 0
@@ -5341,6 +5296,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8213428072468943946}
+  - component: {fileID: 1813056890037827832}
+  - component: {fileID: 8815203647396856678}
+  - component: {fileID: 5777920138819082466}
   m_Layer: 0
   m_Name: Clock
   m_TagString: Enemy
@@ -5364,3 +5322,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1813056890037827832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8840607833546018544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152026cf5581dbd44a6770e57ea68aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particlesystem: {fileID: 6979889006481067863}
+  _ShotPrefab: {fileID: 4413988497694516666, guid: e1b373bab77901140a31be9bcc827ec6, type: 3}
+--- !u!65 &8815203647396856678
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8840607833546018544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.49, y: 2.51, z: 2.23}
+  m_Center: {x: 0, y: 1.39, z: 0}
+--- !u!54 &5777920138819082466
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8840607833546018544}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 2
+  m_AngularDrag: 5
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0

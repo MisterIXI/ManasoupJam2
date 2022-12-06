@@ -264,6 +264,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5926845789949749283}
+  - component: {fileID: 2435567288779864048}
+  - component: {fileID: 6949138839862270537}
+  - component: {fileID: 4184542690691483501}
   m_Layer: 0
   m_Name: WormiiEnemy
   m_TagString: Untagged
@@ -287,6 +290,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2435567288779864048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412992308850408417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f349b05b02780cf47a76b1c608b0fbba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particlesystem: {fileID: 3092776824062776007}
+--- !u!136 &6949138839862270537
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412992308850408417}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.53
+  m_Height: 4.5
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -1.23}
+--- !u!54 &4184542690691483501
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412992308850408417}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 3
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!1 &2442427677830768467
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,9 +568,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5005975300021899653}
-  - component: {fileID: 5643958548238234359}
-  - component: {fileID: 4355164915317410407}
-  - component: {fileID: 4041317450464880757}
   - component: {fileID: 1492393779489053344}
   m_Layer: 0
   m_Name: Wormii
@@ -550,48 +593,6 @@ Transform:
   m_Father: {fileID: 5926845789949749283}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &5643958548238234359
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5634879099443809087}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 3
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 4
-  m_CollisionDetection: 0
---- !u!136 &4355164915317410407
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5634879099443809087}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.53
-  m_Height: 4.5
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -1.23}
---- !u!114 &4041317450464880757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5634879099443809087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f349b05b02780cf47a76b1c608b0fbba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1492393779489053344
 Animator:
   serializedVersion: 4

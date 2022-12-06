@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f920031c2a0942994506815fe6f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _particlesystem: {fileID: 6827482297436773925}
   _enemyProjectilePrefab: {fileID: 4413988497694516666, guid: e1b373bab77901140a31be9bcc827ec6, type: 3}
 --- !u!1001 &1514630584366896856
 PrefabInstance:
@@ -254,3 +255,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7f610e798065da458ed0e75ce864e5e, type: 3}
+--- !u!4 &6827482297436773925 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 494387306445280295, guid: c7f610e798065da458ed0e75ce864e5e, type: 3}
+  m_PrefabInstance: {fileID: 6349086305487325698}
+  m_PrefabAsset: {fileID: 0}

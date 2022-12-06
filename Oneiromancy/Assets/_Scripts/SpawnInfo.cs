@@ -17,7 +17,7 @@ public class SpawnInfo
         switch (layer)
         {
             case 1:
-                range.Wormii = new Vector2Int(1, 1);
+                range.Wormii = new Vector2Int(5, 5);
                 range.Kohl = new Vector2Int(0, 0);
                 range.Cloud = new Vector2Int(0, 0);
                 range.Alarm = new Vector2Int(0, 0);
@@ -86,21 +86,21 @@ public class SpawnInfo
     private static EnemyCountRange ProceduralRandom(int layer)
     {
         EnemyCountRange range = new EnemyCountRange();
-        int enemyCount = 3 + layer / 2;
+        int enemyCount = 2 * layer;
         int maxBosses = layer / 10;
         int BossCount = Random.Range(0, maxBosses + 1);
-        enemyCount -= BossCount * 4;
-        enemyCount = Mathf.Max(0, enemyCount);
+        // enemyCount -= BossCount * 4;
+        // enemyCount = Mathf.Max(0, enemyCount);
         int wormiiCount = Random.Range(0, enemyCount + 1);
         enemyCount -= wormiiCount;
         int kohlCount = Random.Range(0, enemyCount + 1);
         enemyCount -= kohlCount;
         int cloudCount = enemyCount;
 
-        range.Wormii = new Vector2Int(Mathf.Min(0, wormiiCount - wormiiCount / 2), Mathf.Max(0, wormiiCount));
-        range.Kohl = new Vector2Int(Mathf.Min(0, kohlCount - kohlCount / 2), Mathf.Max(0, kohlCount));
-        range.Cloud = new Vector2Int(Mathf.Min(0, cloudCount - cloudCount / 2), Mathf.Max(0, cloudCount));
-        range.Alarm = new Vector2Int(BossCount, BossCount);
+        range.Wormii = new Vector2Int(layer,wormiiCount);
+        range.Kohl = new Vector2Int(layer,kohlCount);
+        range.Cloud = new Vector2Int(layer,cloudCount);
+        range.Alarm = new Vector2Int(BossCount,BossCount);
         return range;
     }
 }
