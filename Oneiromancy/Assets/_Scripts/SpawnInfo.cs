@@ -56,7 +56,7 @@ public class SpawnInfo
                 range.Wormii = new Vector2Int(9, 10);
                 range.Kohl = new Vector2Int(3, 5);
                 range.Cloud = new Vector2Int(2, 5);
-                range.Alarm = new Vector2Int(1, 1);
+                range.Alarm = new Vector2Int(0, 0);
                 break;
             case 8:
                 range.Wormii = new Vector2Int(10, 11);
