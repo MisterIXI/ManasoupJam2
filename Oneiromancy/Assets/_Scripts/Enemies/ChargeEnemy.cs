@@ -10,6 +10,7 @@ public class ChargeEnemy : Enemy
     {
         CurrentHealth = Random.Range(_playerSettings.ChargeEnemyHealthRange.x, _playerSettings.ChargeEnemyHealthRange.y + 1);
         _rb.centerOfMass = Vector3.zero;
+        damageAnim =  "ChargeKohl 1";
     }
     protected override void OnDamage()
     {

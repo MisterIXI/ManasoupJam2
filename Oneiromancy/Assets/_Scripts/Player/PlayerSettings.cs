@@ -106,5 +106,7 @@ public class PlayerSettings : ScriptableObject
     public bool ShowSpawnGizmos = false;
     [Range(0f, 50f)] public float MinSpawnDistance = 10f;
     [Range(5f, 300f)] public float MaxSpawnDistance = 20f;
+    [Range(5, 20)] public int HealthDropCount = 5;
+    public GameObject heartPrefab;
     #endregion
 }

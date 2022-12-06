@@ -12,7 +12,7 @@ public class PlayerAction : MonoBehaviour
     private void Start()
     {
         _playerSettings = ReferenceManager.PlayerController.PlayerSettings;
-        _playerAnim = GetComponent<PlayerAnimation>();
+        _playerAnim = GetComponentInChildren<PlayerAnimation>();
         SwordSetup();
         MagicSetup();
     }

@@ -11,6 +11,7 @@ TagManager:
   - PlayerProjectile
   - Sword
   - Portal
+  - Collectable
   layers:
   - Default
   - TransparentFX

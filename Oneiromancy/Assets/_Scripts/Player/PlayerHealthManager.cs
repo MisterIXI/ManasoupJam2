@@ -13,7 +13,11 @@ public class PlayerHealthManager : MonoBehaviour
         _playerSettings = _playerController.PlayerSettings;
         CurrentHealth = _playerSettings.MaxHealth;
     }
-
+    public void AddHealth(int amount)
+    {
+        CurrentHealth += amount;
+        Debug.Log("Health increase + " + amount + " : Current Health:"+ CurrentHealth);
+    }
     private void OnTriggerEnter(Collider other)
     {
         // Debug.Log("Hit with tag: " + other.tag);
@@ -27,6 +31,11 @@ public class PlayerHealthManager : MonoBehaviour
             {
                 ReferenceManager.GameManager.SetState(GameManager.GameState.GameOver);
             }
+        }
+        if(other.CompareTag("Collectable"))
+        {
+            AddHealth(1);
+            Destroy(other.gameObject);
         }
     }
 }

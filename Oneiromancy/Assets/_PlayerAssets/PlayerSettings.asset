@@ -54,3 +54,5 @@ MonoBehaviour:
   ShowSpawnGizmos: 1
   MinSpawnDistance: 5.4
   MaxSpawnDistance: 28
+  HealthDropCount: 5
+  heartPrefab: {fileID: 0}

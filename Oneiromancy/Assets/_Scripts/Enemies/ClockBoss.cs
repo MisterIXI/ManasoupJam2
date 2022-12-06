@@ -17,6 +17,7 @@ public class ClockBoss : Enemy
         RollRotation();
         CurrentHealth = Random.Range(_playerSettings.BossHealthRange.x, _playerSettings.BossHealthRange.y + 1);
         _gameManager.SetBossHealthBarMax();
+        damageAnim =  "Clockii 1";
     }
     public override void EnemyTick()
     {
