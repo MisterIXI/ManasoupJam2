@@ -44,7 +44,7 @@ MonoBehaviour:
   BossHealthRange: {x: 100, y: 100}
   Boss_AnglePerSecond: 25
   BossAngleRange: {x: 10, y: 45}
-  Boss_PauseTime: 1
+  Boss_PauseTime: 2
   Boss_ShotDelay: 0.05
   CameraOffset: {x: 0, y: 16.85, z: -11}
   PortalAnimDuration: 2
