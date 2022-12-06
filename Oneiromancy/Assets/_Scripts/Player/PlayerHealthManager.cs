@@ -11,12 +11,21 @@ public class PlayerHealthManager : MonoBehaviour
     {
         _playerController = ReferenceManager.PlayerController;
         _playerSettings = _playerController.PlayerSettings;
-        CurrentHealth = _playerSettings.MaxHealth;
+        CurrentHealth = 3;
     }
-    public void AddHealth(int amount)
+    private void AddHealth(int amount)
     {
+        
+        if(CurrentHealth != _playerSettings.MaxHealth)
+        {
         CurrentHealth += amount;
-        Debug.Log("Health increase + " + amount + " : Current Health:"+ CurrentHealth);
+        
+        Debug.Log("Health increase + " + amount + " : Current Health: "+ CurrentHealth);
+        }
+        else{
+            Debug.Log("MaxHealth -  WantToAdd: " + amount);
+        }
+        ReferenceManager.GameManager.UpdateHealth(CurrentHealth);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -25,7 +34,8 @@ public class PlayerHealthManager : MonoBehaviour
         {
             CurrentHealth -= 1;
             Debug.Log("Hit! CurrentHealth: " + CurrentHealth);
-            Destroy(other.gameObject);
+            if(other.CompareTag("EnemyProjectile"))
+                Destroy(other.gameObject);
             ReferenceManager.GameManager.UpdateHealth(CurrentHealth);
             if (CurrentHealth <= 0)
             {
@@ -34,8 +44,8 @@ public class PlayerHealthManager : MonoBehaviour
         }
         if(other.CompareTag("Collectable"))
         {
-            AddHealth(1);
             Destroy(other.gameObject);
+            AddHealth(1);
         }
     }
 }

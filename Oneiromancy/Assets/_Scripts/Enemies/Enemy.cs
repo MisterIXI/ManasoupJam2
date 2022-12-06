@@ -38,15 +38,16 @@ public abstract class Enemy : MonoBehaviour
         gameObject.GetComponentInChildren<Animator>().Play(damageAnim); 
         if (CurrentHealth <= 0)
         {
+            Debug.Log("Current Health: " + CurrentHealth);
             gameObject.GetComponentInChildren<ParticleSystem>().Play(true);
             healthItemCounter++;
             if(healthItemCounter >= _playerSettings.HealthDropCount)
             {
-                Instantiate(_playerSettings.heartPrefab, gameObject.transform.position, gameObject.transform.rotation);
+                Instantiate(_playerSettings.heartPrefab, gameObject.transform.position, Quaternion.identity);
                 healthItemCounter =0;
             }
-            Destroy(gameObject,3);
-            // TODO: maybe spawn a heart?
+            Destroy(gameObject,1);
+            
         }
     }
     abstract public void EnemyTick();

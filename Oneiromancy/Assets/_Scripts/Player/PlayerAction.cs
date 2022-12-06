@@ -61,7 +61,7 @@ public class PlayerAction : MonoBehaviour
     {
         if (_isSlashing)
         {
-            _playerAnim.PlayerAttack();
+           
             SlashIncrement();
         }
     }
@@ -83,7 +83,7 @@ public class PlayerAction : MonoBehaviour
         _onSlashCD = true;
         _slashStartTime = Time.time;
         _isSlashing = true;
-
+         _playerAnim.PlayerAttack();
         SlashIncrement();
         _swordTrail.Clear();
         _swordTrail.enabled = true;

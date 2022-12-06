@@ -28,7 +28,7 @@ MonoBehaviour:
   BlockColliderSize: 1
   MaxProjectiles: 8
   CanPushEnemies: 1
-  MaxHealth: 3
+  MaxHealth: 5
   EnemyKnockBackForce: 10
   EnemySpeed: 5
   FollowEnemyHealthRange: {x: 1, y: 5}

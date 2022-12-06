@@ -17,7 +17,7 @@ public class SpawnInfo
         switch (layer)
         {
             case 1:
-                range.Wormii = new Vector2Int(1, 2);
+                range.Wormii = new Vector2Int(1, 1);
                 range.Kohl = new Vector2Int(0, 0);
                 range.Cloud = new Vector2Int(0, 0);
                 range.Alarm = new Vector2Int(0, 0);
