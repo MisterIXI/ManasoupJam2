@@ -7,10 +7,12 @@ public class PlayerHealthManager : MonoBehaviour
     public int CurrentHealth { get; private set; }
     private PlayerSettings _playerSettings;
     private PlayerController _playerController;
+    private PlayerAnimation _playerAnim;
     private void Start()
     {
         _playerController = ReferenceManager.PlayerController;
         _playerSettings = _playerController.PlayerSettings;
+        _playerAnim = GetComponentInChildren<PlayerAnimation>();
         CurrentHealth = 3;
     }
     private void AddHealth(int amount)
@@ -33,12 +35,14 @@ public class PlayerHealthManager : MonoBehaviour
         if (other.CompareTag("Enemy") || other.CompareTag("EnemyProjectile"))
         {
             CurrentHealth -= 1;
+            _playerAnim.PlayerDamage();
             Debug.Log("Hit! CurrentHealth: " + CurrentHealth);
             if(other.CompareTag("EnemyProjectile"))
                 Destroy(other.gameObject);
             ReferenceManager.GameManager.UpdateHealth(CurrentHealth);
             if (CurrentHealth <= 0)
             {
+                _playerAnim.PlayerDeath();
                 ReferenceManager.GameManager.SetState(GameManager.GameState.GameOver);
             }
         }

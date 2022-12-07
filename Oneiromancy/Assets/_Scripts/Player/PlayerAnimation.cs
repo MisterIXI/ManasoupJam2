@@ -10,11 +10,14 @@ public class PlayerAnimation : MonoBehaviour
     }
     public void PlayerRunning()
     {
-        mAnimator.SetTrigger("Running");
+        
+        if(!mAnimator.GetBool("isWalking"))
+            mAnimator.SetBool("isWalking", true);
     }
-    public void PlayerIdle()
+    public void PlayerRunToIdle()
     {
-        mAnimator.SetTrigger("Idle");
+        if(mAnimator.GetBool("isWalking"))
+            mAnimator.SetBool("isWalking", false);
     }
     public void PlayerAttack()
     {
@@ -23,5 +26,13 @@ public class PlayerAnimation : MonoBehaviour
     public void PlayerCast()
     {
         mAnimator.SetTrigger("Spell");
+    }
+    public void PlayerDamage()
+    {
+        mAnimator.SetTrigger("GetHit");
+    }
+    public void PlayerDeath()
+    {
+        mAnimator.SetTrigger("Death");
     }
 }

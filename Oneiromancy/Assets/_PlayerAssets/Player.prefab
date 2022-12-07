@@ -768,7 +768,7 @@ TrailRenderer:
   m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.3
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -795,7 +795,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.004262951, g: 0.8679245, b: 0, a: 1}
+      key0: {r: 1, g: 0.016115347, b: 0, a: 1}
       key1: {r: 1, g: 0, b: 0, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -1073,7 +1073,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 421fbcf2a82307846b734ae6cd5bc126, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: bf6741c6164ea8440af3fdeb3e171719, type: 2}
+      objectReference: {fileID: 9100000, guid: 2b220fe340ff4854ca7d86932e504233, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 421fbcf2a82307846b734ae6cd5bc126, type: 3}
 --- !u!4 &123797157332535445 stripped

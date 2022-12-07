@@ -43,12 +43,12 @@ public class PlayerController : MonoBehaviour
         // moveDirection = PlayerAction.AdjustMovement(moveDirection);
         if(_actualMovement != Vector3.zero)
         {
-            // Debug.Log("PlayerRunning");
+            
             _playerAnim.PlayerRunning();
         }
         else{
-            // Debug.Log("PlayerIdle");
-            _playerAnim.PlayerIdle();
+            
+            _playerAnim.PlayerRunToIdle();
         }
         _rb.MovePosition(transform.position + _actualMovement);
         if (_isReticleMouseMode)
