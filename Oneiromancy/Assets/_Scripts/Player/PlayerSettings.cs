@@ -109,4 +109,10 @@ public class PlayerSettings : ScriptableObject
     [Range(1, 20)] public int HealthDropCount = 5;
     public GameObject heartPrefab;
     #endregion
+    #region Sound
+    [Header("Sounds")]
+    
+    public AudioClip[] OM_AudioClips;
+
+    #endregion
 }

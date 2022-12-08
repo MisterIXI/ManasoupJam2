@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3017779464230257107}
   - component: {fileID: 6894732749931507974}
+  - component: {fileID: 2923246802670271258}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -52,3 +53,17 @@ MonoBehaviour:
   _CloudPrefab: {fileID: 1510458941636719819, guid: 29f438052380cb14494cd72b84b20f08, type: 3}
   _AlarmPrefab: {fileID: 8840607833546018544, guid: 6cb3ed791187f914f86d0ff98c14db44, type: 3}
   Enemies: []
+--- !u!114 &2923246802670271258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7058895563313104779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da048259cb1fcb488a18184d1205816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrimSilence: 0
+  OM_SoundPlayer: {fileID: 0}

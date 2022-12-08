@@ -83,7 +83,8 @@ public class PlayerAction : MonoBehaviour
         _onSlashCD = true;
         _slashStartTime = Time.time;
         _isSlashing = true;
-         _playerAnim.PlayerAttack();
+        _playerAnim.PlayerAttack();
+        ReferenceManager.OM_SoundManager.PlaySound(1);
         SlashIncrement();
         _swordTrail.Clear();
         _swordTrail.enabled = true;

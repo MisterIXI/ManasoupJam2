@@ -56,3 +56,14 @@ MonoBehaviour:
   MaxSpawnDistance: 28
   HealthDropCount: 1
   heartPrefab: {fileID: 6587491804897650573, guid: dd51a9b198559df4c944768452116625, type: 3}
+  OM_AudioClips:
+  - {fileID: 8300000, guid: 907a968040f2fd742858142b3194cab0, type: 3}
+  - {fileID: 8300000, guid: ec32d23cbfb8b9b4b98b411bd188fc8e, type: 3}
+  - {fileID: 8300000, guid: a10b579d87a28fb4497c86eaab78f0b8, type: 3}
+  - {fileID: 8300000, guid: 080cd1483c8e3ab4cb70ab959cb7532c, type: 3}
+  - {fileID: 8300000, guid: 959c12906e601134db059c9248a58afd, type: 3}
+  - {fileID: 8300000, guid: 400cf614f6b1bdc43b520f0cd13d1e18, type: 3}
+  - {fileID: 8300000, guid: 5350eb049f387504f86fd45d13c602eb, type: 3}
+  - {fileID: 8300000, guid: c9263ec812cdb644ca8623337e74e9eb, type: 3}
+  - {fileID: 8300000, guid: bf0ce5663608bc44098d9494b1ce1bdb, type: 3}
+  - {fileID: 8300000, guid: 9ec776af5834ef24ea0f51ca8bd792a3, type: 3}
