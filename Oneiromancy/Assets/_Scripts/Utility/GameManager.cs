@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameState CurrentState { get; private set; }
     public List<Enemy> Enemies = new List<Enemy>();
     public int CurrentLayer { get; private set; } = 1;
+    public String OM_DeathText{ get; set; } = "You Died";
     private UiScript _ingameUI;
     public enum GameState
     {

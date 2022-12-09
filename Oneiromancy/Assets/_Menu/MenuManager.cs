@@ -42,16 +42,19 @@ public class MenuManager : MonoBehaviour
         CreditsButton.onClick.AddListener(ToggleCredits);
         ResourceButton.onClick.AddListener(ToggleResources);
         ExitButton.onClick.AddListener(ExitGame);
+        
     }
 
     void StartGame()   // Starts the Game
     {
+        ReferenceManager.OM_SoundManager.PlaySound(9,1f);
         Debug.Log("Play Button Pressed --> Starting Game.");
         SceneManager.LoadScene(1);
     }
 
     void ToggleControls() // Hides Credits and shows Controls / hides itself if open
     {
+        ReferenceManager.OM_SoundManager.PlaySound(9,1f);
         if(ControlsPanel.activeSelf == false)
         {
             Debug.Log("Controls Button Pressed --> Showing Controls.");
@@ -69,6 +72,7 @@ public class MenuManager : MonoBehaviour
 
     void ToggleCredits() // Hides Controls and shows Credits / hides itself if open
     {
+        ReferenceManager.OM_SoundManager.PlaySound(9,1f);
         if(CreditsPanel.activeSelf == false)
         {
             Debug.Log("Credits Button Pressed --> Showing Credits.");
@@ -84,6 +88,7 @@ public class MenuManager : MonoBehaviour
     }
     void ToggleResources() // Hides Controls and shows Credits / hides itself if open
     {
+        ReferenceManager.OM_SoundManager.PlaySound(9,1f);
         if(ResourcesPanel.activeSelf == false)
         {
             Debug.Log("Resources Button Pressed --> Showing Resources.");
@@ -100,6 +105,7 @@ public class MenuManager : MonoBehaviour
 
     void ExitGame() // Exits Game
     {
+        ReferenceManager.OM_SoundManager.PlaySound(9,1f);
         Debug.Log("Exit Button Pressed --> Exiting Game.");
         Application.Quit();
     }

@@ -84,7 +84,7 @@ public class PlayerAction : MonoBehaviour
         _slashStartTime = Time.time;
         _isSlashing = true;
         _playerAnim.PlayerAttack();
-        ReferenceManager.OM_SoundManager.PlaySound(1);
+        ReferenceManager.OM_SoundManager.PlaySound(0,1f);
         SlashIncrement();
         _swordTrail.Clear();
         _swordTrail.enabled = true;
@@ -149,16 +149,19 @@ public class PlayerAction : MonoBehaviour
         if (context.canceled)
         {
             _playerAnim.PlayerCast();
+            
             _magicLaserPointer.SetActive(false);
             if (_magicCount < _playerSettings.MaxProjectiles)
             {
                 Vector3 spawnPoint = transform.position + transform.forward;
                 GameObject magic = Instantiate(_magicPrefab, spawnPoint, transform.rotation);
                 _magicCount++;
+                ReferenceManager.OM_SoundManager.PlaySound(6,1f);
             }
             else{
                 Vector3 spawnPoint = transform.position + transform.forward;
                 GameObject magic = Instantiate(_smokePrefab, spawnPoint, transform.rotation);
+                ReferenceManager.OM_SoundManager.PlaySound(5,0.7f);
             }
         }
     }

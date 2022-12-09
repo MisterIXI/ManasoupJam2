@@ -32,6 +32,7 @@ public class GameOverScript : MonoBehaviour
 
     void GoToMainMenu()   // Go to Main Menu
     {
+        ReferenceManager.OM_SoundManager.PlaySound(9,1f);
         Debug.Log("Main Menu Button Pressed --> Switching Scene to Main Menu.");
         SceneManager.LoadScene(0);
         ReferenceManager.GameManager.SetState(GameManager.GameState.MainMenu);

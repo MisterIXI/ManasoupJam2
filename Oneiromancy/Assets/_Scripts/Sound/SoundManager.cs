@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SoundManager: MonoBehaviour
 {
-    public float TrimSilence;
+    // public float TrimSilence;
     private AudioSource OM_SoundPlayer;
     private PlayerSettings _playersettings;
     private void Awake() {
@@ -13,24 +13,32 @@ public class SoundManager: MonoBehaviour
     }
     private void Start() {
         _playersettings = gameObject.GetComponent<GameManager>().PlayerSettings;
-        Debug.Log(" INIT" + _playersettings);
         OM_SoundPlayer = Camera.main.GetComponent<AudioSource>();
     }
     public void OnSceneChange(Scene oldScene, Scene newScene)
     {
+        _playersettings = gameObject.GetComponent<GameManager>().PlayerSettings;
         OM_SoundPlayer = Camera.main.GetComponent<AudioSource>();
-        Debug.Log (" ONSCENECHANGE " + _playersettings);
+        
         
 
     }
-    public void PlaySound(int index)
+    public void PlaySound(int index, float volume)
     {
-        Debug.Log (" ATTACK" + _playersettings);
-        
-        OM_SoundPlayer.PlayOneShot(_playersettings.OM_AudioClips[index]);
+        if(OM_SoundPlayer != null)
+            OM_SoundPlayer.PlayOneShot(_playersettings.OM_AudioClips[index],0.4f);
     }
-    public void PlayBackgroundMusic()
+    public IEnumerator FadeOut( float FadeTime)
     {
-       OM_SoundPlayer.PlayOneShot(_playersettings.OM_AudioClips[1]);
+        float startVolume = OM_SoundPlayer.volume;
+
+        while (OM_SoundPlayer.volume > 0)
+        {
+           OM_SoundPlayer.volume -= startVolume * Time.fixedUnscaledTime/FadeTime;
+            yield return null;
+        }
+        OM_SoundPlayer.Stop();
+        OM_SoundPlayer.volume=startVolume;
     }
+    
 }

@@ -151,11 +151,13 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Bounds"))
         {
             _gameManager.SetState(GameManager.GameState.GameOver);
+            ReferenceManager.OM_SoundManager.PlaySound(2,1f);// DEATH SOUND
         }
     }
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Portal"))
         {
+            ReferenceManager.OM_SoundManager.PlaySound(7,0.7f); // PORTAL SOUND
             _gameManager.AdvanceLayer();
         }
     }

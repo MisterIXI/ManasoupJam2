@@ -55,7 +55,8 @@ public class UiScript : MonoBehaviour
 
     public void ToggleBossHealthBar(bool toggle)
     {
-        _bossSlider.gameObject.SetActive(toggle);
+        if(_bossSlider != null)
+            _bossSlider.gameObject.SetActive(toggle);
     }
     private void UpdateBossHealthBar()
     {

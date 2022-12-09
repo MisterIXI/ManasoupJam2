@@ -16,12 +16,14 @@ public class DeathCamUI : MonoBehaviour
     }
     public void StartDeathCam()
     {
+        ReferenceManager.OM_SoundManager.PlaySound(9,1f);
         _gameOverUI.SetActive(false);
         _virtualCam.SetActive(true);
         _cameraUI.SetActive(true);
     }
     public void EndDeathCam()
     {
+        ReferenceManager.OM_SoundManager.PlaySound(9,1f);
         Debug.Log("Main Menu Button Pressed --> Switching Scene to Main Menu.");
         SceneManager.LoadScene(0);
     }
