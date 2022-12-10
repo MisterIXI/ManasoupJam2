@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3017779464230257107}
   - component: {fileID: 6894732749931507974}
   - component: {fileID: 2923246802670271258}
+  - component: {fileID: 1632149189}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ede6738ac86e5e45921ececdf90f164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _GameOverScreenPrefab: {fileID: 2371813453292017874, guid: b2a1d4d6466f57349bffcab6b0c9db4a, type: 3}
+  _GameOverScreenPrefab: {fileID: 2371813453292017874, guid: d5e3425a54acf5d4480f079319e2a7b0, type: 3}
+  _DeathCamScreenPrefab: {fileID: 2371813453292017874, guid: b2a1d4d6466f57349bffcab6b0c9db4a, type: 3}
   _IngameUIPrefab: {fileID: 5016215119317453058, guid: 83f5b2971e9a48b4e92c6c3048227cd7, type: 3}
   PlayerSettings: {fileID: 11400000, guid: 9214f473ff60c0c429fed420dd9f286d, type: 2}
   _KohlPrefab: {fileID: 9144784773358939731, guid: 06e59c053ecad67468bb8f2aa83c54b3, type: 3}
@@ -65,5 +67,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da048259cb1fcb488a18184d1205816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrimSilence: 0
-  OM_SoundPlayer: {fileID: 0}
+--- !u!114 &1632149189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7058895563313104779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfb3800ba0363a7498db2b5208a8b514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 0.4

@@ -35,8 +35,8 @@ public class PlayerHealthManager : MonoBehaviour
         if (other.CompareTag("Enemy") || other.CompareTag("EnemyProjectile"))
         {
             CurrentHealth -= 1;
-            _playerAnim.PlayerDamage();
             ReferenceManager.OM_SoundManager.PlaySound(4,0.75f);
+            _playerAnim.PlayerDamage();
             Debug.Log("Hit! CurrentHealth: " + CurrentHealth);
             if(other.CompareTag("EnemyProjectile"))
                 Destroy(other.gameObject);
@@ -52,8 +52,8 @@ public class PlayerHealthManager : MonoBehaviour
                     ReferenceManager.GameManager.OM_DeathText = "Projectile" + other.gameObject.name;
                     Debug.Log(ReferenceManager.GameManager.OM_DeathText);
                 }
-                _playerAnim.PlayerDeath();
                 ReferenceManager.OM_SoundManager.PlaySound(2,1f);
+                _playerAnim.PlayerDeath();
                 // stop menu music
                 StartCoroutine(ReferenceManager.OM_SoundManager.FadeOut( 0.5f));
                 ReferenceManager.GameManager.SetState(GameManager.GameState.GameOver);

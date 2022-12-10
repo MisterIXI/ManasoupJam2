@@ -10,6 +10,7 @@ public class DeadTextController : MonoBehaviour
     {
         _TextComp = gameObject.GetComponent<TextMeshProUGUI>();
         _TextComp.text = ReferenceManager.GameManager.OM_DeathText;
+        Debug.Log("DeathText changed to: "+ ReferenceManager.GameManager.OM_DeathText);
     }
 
 }
