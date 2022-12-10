@@ -27,12 +27,13 @@ public class MenuManager : MonoBehaviour
     public Button PlayButton;
     public Button ControlsButton;
     public Button CreditsButton;
-    public Button ResourceButton;
+    public Button LeaderboardButton;
     public Button ExitButton;
 
     public GameObject ControlsPanel;
     public GameObject CreditsPanel;
-    public GameObject ResourcesPanel;
+    public GameObject LeaderboardPanel;
+    public GameObject LeaderboardEntrys;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +41,7 @@ public class MenuManager : MonoBehaviour
         PlayButton.onClick.AddListener(StartGame);
         ControlsButton.onClick.AddListener(ToggleControls);
         CreditsButton.onClick.AddListener(ToggleCredits);
-        ResourceButton.onClick.AddListener(ToggleResources);
+        LeaderboardButton.onClick.AddListener(ToggleResources);
         ExitButton.onClick.AddListener(ExitGame);
         
     }
@@ -59,7 +60,7 @@ public class MenuManager : MonoBehaviour
         {
             Debug.Log("Controls Button Pressed --> Showing Controls.");
             CreditsPanel.SetActive(false);
-            ResourcesPanel.SetActive(false);
+            LeaderboardPanel.SetActive(false);
             ControlsPanel.SetActive(true);
         }
         else
@@ -77,7 +78,7 @@ public class MenuManager : MonoBehaviour
         {
             Debug.Log("Credits Button Pressed --> Showing Credits.");
             ControlsPanel.SetActive(false);
-            ResourcesPanel.SetActive(false);
+            LeaderboardPanel.SetActive(false);
             CreditsPanel.SetActive(true);
         }
         else
@@ -89,17 +90,17 @@ public class MenuManager : MonoBehaviour
     void ToggleResources() // Hides Controls and shows Credits / hides itself if open
     {
         ReferenceManager.OM_SoundManager.PlaySound(9,1f);
-        if(ResourcesPanel.activeSelf == false)
+        if(LeaderboardPanel.activeSelf == false)
         {
             Debug.Log("Resources Button Pressed --> Showing Resources.");
             ControlsPanel.SetActive(false);
             CreditsPanel.SetActive(false);
-            ResourcesPanel.SetActive(true);
+            LeaderboardPanel.SetActive(true);
         }
         else
         {
             Debug.Log("Resources Button Pressed --> Hiding Resources.");
-            ResourcesPanel.SetActive(false);
+            LeaderboardPanel.SetActive(false);
         } 
     }
 

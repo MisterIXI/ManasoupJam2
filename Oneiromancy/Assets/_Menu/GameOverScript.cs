@@ -20,10 +20,13 @@ public class GameOverScript : MonoBehaviour
 {
     public Button MainMenuButton;
     public Text StageText;
-
+    public Text DeathText;
 
     void Start()
     {
+        
+        DeathText.text = ReferenceManager.GameManager.OM_DeathText;
+        Debug.Log("DeathText changed to: "+ ReferenceManager.GameManager.OM_DeathText);
         StageText.text = ReferenceManager.GameManager.CurrentLayer.ToString(); // Send Stage text to screen
         MainMenuButton.onClick.AddListener(GoToMainMenu);
         MainMenuButton.interactable = false;
