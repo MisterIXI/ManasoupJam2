@@ -13309,6 +13309,7 @@ GameObject:
   - component: {fileID: 3042291335750580458}
   - component: {fileID: 3042291335750580459}
   - component: {fileID: 3042291335750580456}
+  - component: {fileID: 5116058108211993298}
   - component: {fileID: 3042291335750580460}
   m_Layer: 5
   m_Name: MainMenu-Canvas
@@ -13405,6 +13406,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5116058108211993298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3042291335750580457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a4914f74934a4ba8d7e107ddc6ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3042291335750580460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13420,11 +13433,63 @@ MonoBehaviour:
   PlayButton: {fileID: 3042291335348490321}
   ControlsButton: {fileID: 3042291335448996239}
   CreditsButton: {fileID: 3042291335207242692}
-  ResourceButton: {fileID: 3042291335769817381}
+  LeaderboardButton: {fileID: 0}
   ExitButton: {fileID: 3042291336238671286}
   ControlsPanel: {fileID: 3042291335738153020}
   CreditsPanel: {fileID: 3042291334618008192}
-  ResourcesPanel: {fileID: 3042291335293252774}
+  LeaderboardPanel: {fileID: 8090423416189172832}
+  LeaderboardEntrys:
+  - {fileID: 1261925635053354289}
+  - {fileID: 5599006485615420524}
+  - {fileID: 633190368309627865}
+  - {fileID: 2180929843966993455}
+  - {fileID: 5979949190627618929}
+  - {fileID: 1750106144159361001}
+  - {fileID: 695106549264749740}
+  - {fileID: 8699236399717268903}
+  - {fileID: 7308178640320067811}
+  - {fileID: 2355964366393879127}
+  - {fileID: 4299854936277026237}
+  - {fileID: 1707004698816026878}
+  rNames:
+  - {fileID: 3636178522277849082}
+  - {fileID: 341092734730225297}
+  - {fileID: 8119042175229471499}
+  - {fileID: 9145753443471952615}
+  - {fileID: 7770159976787870082}
+  - {fileID: 1234024629914421681}
+  - {fileID: 4099021700098400492}
+  - {fileID: 5251416038859237686}
+  - {fileID: 1704625118721289229}
+  - {fileID: 4450795362314526672}
+  - {fileID: 7703622714727745582}
+  - {fileID: 999787329965956008}
+  rScores:
+  - {fileID: 705191864699621541}
+  - {fileID: 7278396103479043769}
+  - {fileID: 1017036463051676465}
+  - {fileID: 7922632391212182629}
+  - {fileID: 4126853812293642390}
+  - {fileID: 3428698119608220419}
+  - {fileID: 4935643636365969761}
+  - {fileID: 8677490360844452471}
+  - {fileID: 8598091601838713531}
+  - {fileID: 4820644192427033763}
+  - {fileID: 9121602156701570317}
+  - {fileID: 4390585783274821752}
+  rDates:
+  - {fileID: 3085125252367571264}
+  - {fileID: 910758882369297763}
+  - {fileID: 1192403440308652831}
+  - {fileID: 6729309484059591413}
+  - {fileID: 2341883009965304775}
+  - {fileID: 8917585515767388308}
+  - {fileID: 3187602734842743968}
+  - {fileID: 2676370932871821198}
+  - {fileID: 9042560137450355590}
+  - {fileID: 2487113381194040662}
+  - {fileID: 4346388361064720306}
+  - {fileID: 7640847618148834920}
 --- !u!1 &3042291335755513124
 GameObject:
   m_ObjectHideFlags: 0
@@ -19034,9 +19099,9 @@ RectTransform:
   m_Father: {fileID: 308231909272301875}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 5, y: -25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1699054245510345173
@@ -19148,7 +19213,7 @@ GameObject:
   - component: {fileID: 6659052278373811477}
   - component: {fileID: 2625332177555116070}
   m_Layer: 5
-  m_Name: Leaderboard-Shadow-Panel (1)
+  m_Name: Leaderboard-Shadow-Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19834,9 +19899,9 @@ RectTransform:
   m_Father: {fileID: 308231909272301875}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 236.66667, y: -25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9046800129296978352

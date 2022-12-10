@@ -32,8 +32,13 @@ public class MenuManager : MonoBehaviour
 
     public GameObject ControlsPanel;
     public GameObject CreditsPanel;
+    [Header("HighScore")]
     public GameObject LeaderboardPanel;
-    public GameObject LeaderboardEntrys;
+    public GameObject[] LeaderboardEntrys;
+    public TMPro.TextMeshProUGUI[] rNames;
+    public TMPro.TextMeshProUGUI[] rScores;
+    public TMPro.TextMeshProUGUI[] rDates;
+    HighScores myScores;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +56,7 @@ public class MenuManager : MonoBehaviour
         ReferenceManager.OM_SoundManager.PlaySound(9,1f);
         Debug.Log("Play Button Pressed --> Starting Game.");
         SceneManager.LoadScene(1);
+        myScores = GetComponent<HighScores>();
     }
 
     void ToggleControls() // Hides Credits and shows Controls / hides itself if open
@@ -96,6 +102,7 @@ public class MenuManager : MonoBehaviour
             ControlsPanel.SetActive(false);
             CreditsPanel.SetActive(false);
             LeaderboardPanel.SetActive(true);
+            LoadHighscore();
         }
         else
         {
@@ -110,4 +117,35 @@ public class MenuManager : MonoBehaviour
         Debug.Log("Exit Button Pressed --> Exiting Game.");
         Application.Quit();
     }
+    void LoadHighscore() //Fetches the Data at the beginning
+    {
+        for (int i = 0; i < rNames.Length;i ++)
+        {
+            rNames[i].text = i + 1 + ". Fetching...";
+        }
+        
+        StartCoroutine("RefreshHighscores");
+    }
+    public void SetScoresToMenu(PlayerScore[] highscoreList) //Assigns proper name and score for each text value
+    {
+        for (int i = 0; i < rNames.Length;i ++)
+        {
+            rNames[i].text = i + 1 + ". ";
+            if (highscoreList.Length > i)
+            {
+                rScores[i].text = highscoreList[i].score.ToString();
+                rNames[i].text = highscoreList[i].username;
+                rDates[i].text = highscoreList[i].date;
+            }
+        }
+    }
+    IEnumerator RefreshHighscores() //Refreshes the scores every 30 seconds
+    {
+        while(true)
+        {
+            myScores.DownloadScores();
+            yield return new WaitForSeconds(30);
+        }
+    }
+
 }
