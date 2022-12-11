@@ -126,7 +126,7 @@ public class MenuManager : MonoBehaviour
         
         StartCoroutine("RefreshHighscores");
     }
-    public void SetScoresToMenu(PlayerScore[] highscoreList) //Assigns proper name and score for each text value
+    public void SetScoresToMenu(HighScores.PlayerScore[] highscoreList) //Assigns proper name and score for each text value
     {
         for (int i = 0; i < rNames.Length;i ++)
         {
