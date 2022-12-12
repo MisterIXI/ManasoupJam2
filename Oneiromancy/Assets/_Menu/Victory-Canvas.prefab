@@ -1729,12 +1729,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2371813453292017878}
   - component: {fileID: 2371813453292017873}
+  - component: {fileID: 7471748393758461481}
   - component: {fileID: 2371813453292017872}
   - component: {fileID: 2371813453292017875}
-  - component: {fileID: 2371813453292017879}
   - component: {fileID: 8066005466326014760}
   - component: {fileID: 2485447121728961890}
-  - component: {fileID: 638530785515099468}
   m_Layer: 5
   m_Name: Victory-Canvas
   m_TagString: Untagged
@@ -1785,6 +1784,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &7471748393758461481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371813453292017874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a96940ccdc2b984e9b7f5789125f39a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2371813453292017872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1825,21 +1836,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2371813453292017879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2371813453292017874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d255dbc601fc3a140b3031321da06c69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainMenuButton: {fileID: 7639989916149160289}
-  StageText: {fileID: 2371813452884328496}
-  DeathText: {fileID: 302494525390258153}
 --- !u!114 &8066005466326014760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1885,21 +1881,6 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
---- !u!114 &638530785515099468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2371813453292017874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d65b34ed5efaba4b9a754b15df8e9e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _virtualCam: {fileID: 1328017576880113409, guid: 76cafc7214e32bf44844233c71ef858d, type: 3}
-  _gameOverUI: {fileID: 2371813453069562058}
-  _cameraUI: {fileID: 2371813453292017874, guid: b2a1d4d6466f57349bffcab6b0c9db4a, type: 3}
 --- !u!1 &2371813453292820597
 GameObject:
   m_ObjectHideFlags: 0
@@ -2175,7 +2156,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2775295739882431815}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7471748393758461481}
+        m_TargetAssemblyTypeName: VictoryUI, Assembly-CSharp
+        m_MethodName: OnButtonExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4350281978982559383
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,7 +2475,7 @@ GameObject:
   - component: {fileID: 3523740526661391126}
   - component: {fileID: 2339662542601019928}
   m_Layer: 5
-  m_Name: DeathCam-Button
+  m_Name: Continue-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2591,9 +2584,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 638530785515099468}
-        m_TargetAssemblyTypeName: DeathCamUI, Assembly-CSharp
-        m_MethodName: StartDeathCam
+      - m_Target: {fileID: 7471748393758461481}
+        m_TargetAssemblyTypeName: VictoryUI, Assembly-CSharp
+        m_MethodName: OnButtonContinue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

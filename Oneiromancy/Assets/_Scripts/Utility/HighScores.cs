@@ -72,7 +72,7 @@ public class HighScores : MonoBehaviour
 
     private string FormateDate( string olddate)
     {
-        return "";
+        return olddate;
     }
     public struct PlayerScore //Creates place to store the variables for the name and score of each player
     {

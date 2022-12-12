@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
         Ingame,
         Portal,
         Paused,
-        GameOver
+        GameOver,
+        Win
     }
     private void Awake()
     {
@@ -98,6 +99,15 @@ public class GameManager : MonoBehaviour
             Instantiate(_GameOverScreenPrefab);
             ReferenceManager.PlayerController.UnSubscribeToInputEvents();
         }
+        if(CurrentState == GameState.Win)
+        {
+            Time.timeScale  =0 ;
+
+        }
+        if(oldState == GameState.Win)
+        {
+            Time.timeScale  = 1;
+        }
     }
     public void UpdateHealth(int health)
     {
@@ -169,7 +179,11 @@ public class GameManager : MonoBehaviour
         if (Enemies.Count == 0)
         {
             _ingameUI.ToggleBossHealthBar(false);
-            SetState(GameState.Portal);
+            if(CurrentLayer == 10)
+                SetState(GameState.Win);
+            else
+                SetState(GameState.Portal);
+            
         }
     }
     private void ResetValues()

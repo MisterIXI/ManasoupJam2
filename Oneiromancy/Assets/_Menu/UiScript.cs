@@ -26,12 +26,16 @@ public class UiScript : MonoBehaviour
     public int StageNr = 1; // HIER WIEDER DIE STAGE(LVL) EINFÜGEN
     public int CurrentBossHealth;
     public int MaxBossHealth;
-   
+    public GameObject VictoryUI;
+    private void Start() {
+        ReferenceManager.GameManager.OnStateChange+= this.OnStateChange;
+    }
     void FixedUpdate()
     {
         UpdateHpBar();
         UpdateStage();
         UpdateBossHealthBar();
+        
     }
 
     void UpdateHpBar()   // shows/hides hearth based on hp
@@ -62,5 +66,16 @@ public class UiScript : MonoBehaviour
     {
         _bossSlider.value = CurrentBossHealth;
         _bossSlider.maxValue = MaxBossHealth;
+    }
+    private void OnStateChange(GameManager.GameState oldState, GameManager.GameState newState)
+    {
+        if (newState == GameManager.GameState.Win)
+        {
+            VictoryUI.SetActive(true);
+        }
+        if(oldState == GameManager.GameState.Win && newState == GameManager.GameState.Portal)
+        {
+            VictoryUI.SetActive(false);
+        }
     }
 }

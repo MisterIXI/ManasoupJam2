@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ede6738ac86e5e45921ececdf90f164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _GameOverScreenPrefab: {fileID: 2371813453292017874, guid: d5e3425a54acf5d4480f079319e2a7b0, type: 3}
-  _DeathCamScreenPrefab: {fileID: 2371813453292017874, guid: b2a1d4d6466f57349bffcab6b0c9db4a, type: 3}
+  _GameOverScreenPrefab: {fileID: 2371813453292017874, guid: 4971dd77dbe65a745a9225280c0d036c, type: 3}
   _IngameUIPrefab: {fileID: 5016215119317453058, guid: 83f5b2971e9a48b4e92c6c3048227cd7, type: 3}
   PlayerSettings: {fileID: 11400000, guid: 9214f473ff60c0c429fed420dd9f286d, type: 2}
   _KohlPrefab: {fileID: 9144784773358939731, guid: 06e59c053ecad67468bb8f2aa83c54b3, type: 3}

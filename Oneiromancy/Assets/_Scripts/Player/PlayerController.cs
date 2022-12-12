@@ -161,6 +161,7 @@ public class PlayerController : MonoBehaviour
             _gameManager.AdvanceLayer();
         }
     }
+    
     #region Input Subscriptions
     public void SubscribeToInputEvents()
     {

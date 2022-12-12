@@ -1284,7 +1284,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1353,6 +1353,7 @@ MonoBehaviour:
   StageNr: 1
   CurrentBossHealth: 0
   MaxBossHealth: 0
+  VictoryUI: {fileID: 2371813453292017874, guid: d5e3425a54acf5d4480f079319e2a7b0, type: 3}
 --- !u!1 &5016215119569927332
 GameObject:
   m_ObjectHideFlags: 0

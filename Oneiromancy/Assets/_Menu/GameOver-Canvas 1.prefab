@@ -2604,7 +2604,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: you died
+  m_Text: you died by
 --- !u!1 &6629095335551039486
 GameObject:
   m_ObjectHideFlags: 0
