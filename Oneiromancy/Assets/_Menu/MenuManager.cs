@@ -48,6 +48,7 @@ public class MenuManager : MonoBehaviour
         CreditsButton.onClick.AddListener(ToggleCredits);
         LeaderboardButton.onClick.AddListener(ToggleResources);
         ExitButton.onClick.AddListener(ExitGame);
+        myScores = GetComponent<HighScores>();
         
     }
 
@@ -56,7 +57,6 @@ public class MenuManager : MonoBehaviour
         ReferenceManager.OM_SoundManager.PlaySound(9,1f);
         Debug.Log("Play Button Pressed --> Starting Game.");
         SceneManager.LoadScene(1);
-        myScores = GetComponent<HighScores>();
     }
 
     void ToggleControls() // Hides Credits and shows Controls / hides itself if open
