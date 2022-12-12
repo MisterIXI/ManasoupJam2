@@ -154,7 +154,7 @@ public class PlayerAction : MonoBehaviour
             if (_magicCount < _playerSettings.MaxProjectiles)
             {
                 ReferenceManager.OM_SoundManager.PlaySound(6,0.7f);
-                Vector3 spawnPoint = transform.position + transform.forward;
+                Vector3 spawnPoint = transform.position + transform.forward + Vector3.up;
                 GameObject magic = Instantiate(_magicPrefab, spawnPoint, transform.rotation);
                 _magicCount++;
             }
