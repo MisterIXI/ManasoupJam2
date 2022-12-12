@@ -28,6 +28,8 @@ public class GameOverScript : MonoBehaviour
         DeathText.text += ReferenceManager.GameManager.OM_DeathText;
         Debug.Log("DeathText changed to: "+ ReferenceManager.GameManager.OM_DeathText);
         StageText.text = ReferenceManager.GameManager.CurrentLayer.ToString(); // Send Stage text to screen
+        // SAVE TO DATABASE 
+        HighScores.UploadScore(ReferenceManager.GameManager.playername, ReferenceManager.GameManager.CurrentLayer);
         MainMenuButton.onClick.AddListener(GoToMainMenu);
         MainMenuButton.interactable = false;
         StartCoroutine(DelayedActivate()); 

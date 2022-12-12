@@ -131,6 +131,13 @@ public class MenuManager : MonoBehaviour
             
         }
     }
+    /* 
 
-
+        EDIT PLAYERNAME
+    */
+    public void SetPlayername(string value)
+    {
+        ReferenceManager.GameManager.playername  = value;
+        Debug.Log("playername changed to: " + ReferenceManager.GameManager.playername);
+    }
 }

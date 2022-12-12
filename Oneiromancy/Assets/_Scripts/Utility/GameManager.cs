@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public int CurrentLayer { get; private set; } = 1;
     public String OM_DeathText{ get; set; } = "You Died";
     private UiScript _ingameUI;
+    public string playername {get;set;}="anonym";
     public enum GameState
     {
         MainMenu,

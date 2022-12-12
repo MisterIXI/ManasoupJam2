@@ -15,6 +15,8 @@ public class VictoryUI : MonoBehaviour
     public void OnButtonExit()
     {
         ReferenceManager.OM_SoundManager.PlaySound(9,1f);
+        // DATABASE SAVE
+        HighScores.UploadScore(ReferenceManager.GameManager.playername, ReferenceManager.GameManager.CurrentLayer);
         Debug.Log("Exit Button Pressed --> Exiting Game.");
         Application.Quit();
     }
