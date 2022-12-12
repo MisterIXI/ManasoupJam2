@@ -10,7 +10,9 @@ public abstract class Enemy : MonoBehaviour
     protected PlayerSettings _playerSettings;
     protected Rigidbody _rb;
     public int CurrentHealth { get; protected set; }
-
+    public int healthItemCounter {get;protected set;}
+    public string damageAnim{get; protected set;}
+    [SerializeField]private Transform _particlesystem;
     private void Start()
     {
         _playerTransform = ReferenceManager.PlayerController.transform;
@@ -21,6 +23,8 @@ public abstract class Enemy : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         // default Health 
         CurrentHealth = 10;
+        healthItemCounter = 0;
+        damageAnim = "Wormii 1";
         Init();
     }
     abstract protected void Init();
@@ -31,10 +35,25 @@ public abstract class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         CurrentHealth -= damage;
+        gameObject.GetComponentInChildren<Animator>().Play(damageAnim); 
         if (CurrentHealth <= 0)
         {
-            Destroy(gameObject);
-            // TODO: maybe spawn a heart?
+            Debug.Log("Current Health: " + CurrentHealth);
+            gameObject.GetComponentInChildren<ParticleSystem>().Play(true);
+            healthItemCounter++;
+            if(healthItemCounter >= _playerSettings.HealthDropCount)
+            {
+                Instantiate(_playerSettings.heartPrefab, gameObject.transform.position, Quaternion.identity);
+                healthItemCounter =0;
+            }
+            if(_particlesystem !=null)
+            {
+                _particlesystem.parent = null;
+                _particlesystem.position= transform.position;
+                Destroy(_particlesystem.gameObject,2);
+            }
+                Destroy(gameObject);
+            
         }
     }
     abstract public void EnemyTick();
@@ -66,7 +85,7 @@ public abstract class Enemy : MonoBehaviour
             _rb.AddForce(direction * force, ForceMode.Impulse);
     }
     abstract protected void OnDamage();
-    private void OnDestroy()
+    void OnDestroy()
     {
         _gameManager.EnemyKilled(this);
     }

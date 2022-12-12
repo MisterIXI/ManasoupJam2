@@ -27,12 +27,19 @@ public class MenuManager : MonoBehaviour
     public Button PlayButton;
     public Button ControlsButton;
     public Button CreditsButton;
-    public Button ResourceButton;
+    public Button LeaderboardButton;
     public Button ExitButton;
 
     public GameObject ControlsPanel;
     public GameObject CreditsPanel;
-    public GameObject ResourcesPanel;
+    [Header("HighScore")]
+    public GameObject LeaderboardPanel;
+    public GameObject[] LeaderboardEntrys;
+    public TMPro.TextMeshProUGUI[] rNames;
+    public TMPro.TextMeshProUGUI[] rScores;
+    public TMPro.TextMeshProUGUI[] rDates;
+    public GameObject[] rObjects;
+    HighScores myScores;
 
     // Start is called before the first frame update
     void Start()
@@ -40,23 +47,27 @@ public class MenuManager : MonoBehaviour
         PlayButton.onClick.AddListener(StartGame);
         ControlsButton.onClick.AddListener(ToggleControls);
         CreditsButton.onClick.AddListener(ToggleCredits);
-        ResourceButton.onClick.AddListener(ToggleResources);
+        LeaderboardButton.onClick.AddListener(ToggleResources);
         ExitButton.onClick.AddListener(ExitGame);
+        myScores = GetComponent<HighScores>();
+        
     }
 
     void StartGame()   // Starts the Game
     {
+        ReferenceManager.OM_SoundManager.PlaySound(9,1f);
         Debug.Log("Play Button Pressed --> Starting Game.");
         SceneManager.LoadScene(1);
     }
 
     void ToggleControls() // Hides Credits and shows Controls / hides itself if open
     {
+        ReferenceManager.OM_SoundManager.PlaySound(9,1f);
         if(ControlsPanel.activeSelf == false)
         {
             Debug.Log("Controls Button Pressed --> Showing Controls.");
             CreditsPanel.SetActive(false);
-            ResourcesPanel.SetActive(false);
+            LeaderboardPanel.SetActive(false);
             ControlsPanel.SetActive(true);
         }
         else
@@ -69,11 +80,12 @@ public class MenuManager : MonoBehaviour
 
     void ToggleCredits() // Hides Controls and shows Credits / hides itself if open
     {
+        ReferenceManager.OM_SoundManager.PlaySound(9,1f);
         if(CreditsPanel.activeSelf == false)
         {
             Debug.Log("Credits Button Pressed --> Showing Credits.");
             ControlsPanel.SetActive(false);
-            ResourcesPanel.SetActive(false);
+            LeaderboardPanel.SetActive(false);
             CreditsPanel.SetActive(true);
         }
         else
@@ -84,23 +96,48 @@ public class MenuManager : MonoBehaviour
     }
     void ToggleResources() // Hides Controls and shows Credits / hides itself if open
     {
-        if(ResourcesPanel.activeSelf == false)
+        ReferenceManager.OM_SoundManager.PlaySound(9,1f);
+        if(LeaderboardPanel.activeSelf == false)
         {
             Debug.Log("Resources Button Pressed --> Showing Resources.");
             ControlsPanel.SetActive(false);
             CreditsPanel.SetActive(false);
-            ResourcesPanel.SetActive(true);
+            LeaderboardPanel.SetActive(true);
+            myScores.DownloadScores();
+            // SetScoresToMenu(myScores.scoreList);
         }
         else
         {
             Debug.Log("Resources Button Pressed --> Hiding Resources.");
-            ResourcesPanel.SetActive(false);
+            LeaderboardPanel.SetActive(false);
         } 
     }
 
     void ExitGame() // Exits Game
     {
+        ReferenceManager.OM_SoundManager.PlaySound(9,1f);
         Debug.Log("Exit Button Pressed --> Exiting Game.");
         Application.Quit();
+    }
+    
+    public void SetScoresToMenu(HighScores.PlayerScore[] highscoreList) //Assigns proper name and score for each text value
+    {
+        for (int i = 0; i < highscoreList.Length;i ++)
+        {
+                rScores[i].text = highscoreList[i].score.ToString();
+                rNames[i].text = highscoreList[i].username;
+                rDates[i].text = highscoreList[i].date;
+                rObjects[i].SetActive(true);
+            
+        }
+    }
+    /* 
+
+        EDIT PLAYERNAME
+    */
+    public void SetPlayername(string value)
+    {
+        ReferenceManager.GameManager.playername  = value;
+        Debug.Log("playername changed to: " + ReferenceManager.GameManager.playername);
     }
 }

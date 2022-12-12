@@ -8,7 +8,8 @@ public class ShooterEnemy : Enemy
     private float _lastShotTime;
     protected override void Init()
     {
-
+        
+        damageAnim =  "ShooterEnemy 1";
     }
     public override void EnemyTick()
     {

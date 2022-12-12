@@ -16,49 +16,40 @@ using UnityEngine.UI;
 
 public class UiScript : MonoBehaviour
 {
-    public Image HP1;
-    public Image HP2;
-    public Image HP3;
+    [SerializeField] public PlayerSettings PlayerSettings;
+    public Image[] healthImage;
+    // public Image HP2;
+    // public Image HP3;
     public int CurrentHealth = 3;   // HIER DAS MOMENTANE LEBEN EINFÜGEN
     [SerializeField] private Slider _bossSlider;
     public Text StageText;
     public int StageNr = 1; // HIER WIEDER DIE STAGE(LVL) EINFÜGEN
     public int CurrentBossHealth;
     public int MaxBossHealth;
-
+    public GameObject VictoryUI;
+    private void Start() {
+        ReferenceManager.GameManager.OnStateChange+= this.OnStateChange;
+    }
     void FixedUpdate()
     {
         UpdateHpBar();
         UpdateStage();
         UpdateBossHealthBar();
+        
     }
 
     void UpdateHpBar()   // shows/hides hearth based on hp
     {
-        if (CurrentHealth == 3)
+        
+            
+        for (int i = 0; i < PlayerSettings.MaxHealth; i++)
         {
-            HP1.enabled = true;
-            HP2.enabled = true;
-            HP3.enabled = true;
+            if (i+1 <= CurrentHealth)
+                healthImage[i].enabled=true;
+            else
+                healthImage[i].enabled=false;
         }
-        else if (CurrentHealth == 2)
-        {
-            HP1.enabled = true;
-            HP2.enabled = true;
-            HP3.enabled = false;
-        }
-        else if (CurrentHealth == 1)
-        {
-            HP1.enabled = true;
-            HP2.enabled = false;
-            HP3.enabled = false;
-        }
-        else
-        {
-            HP1.enabled = false;
-            HP2.enabled = false;
-            HP3.enabled = false;
-        }
+    
     }
 
     void UpdateStage() // updates Stage lvl
@@ -68,11 +59,23 @@ public class UiScript : MonoBehaviour
 
     public void ToggleBossHealthBar(bool toggle)
     {
-        _bossSlider.gameObject.SetActive(toggle);
+        if(_bossSlider != null)
+            _bossSlider.gameObject.SetActive(toggle);
     }
     private void UpdateBossHealthBar()
     {
         _bossSlider.value = CurrentBossHealth;
         _bossSlider.maxValue = MaxBossHealth;
+    }
+    private void OnStateChange(GameManager.GameState oldState, GameManager.GameState newState)
+    {
+        if (newState == GameManager.GameState.Win)
+        {
+            VictoryUI.SetActive(true);
+        }
+        if(oldState == GameManager.GameState.Win && newState == GameManager.GameState.Portal)
+        {
+            VictoryUI.SetActive(false);
+        }
     }
 }

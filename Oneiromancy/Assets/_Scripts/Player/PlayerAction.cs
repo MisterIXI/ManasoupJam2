@@ -8,10 +8,11 @@ public class PlayerAction : MonoBehaviour
 
 
     private PlayerSettings _playerSettings;
-
+    private PlayerAnimation _playerAnim;
     private void Start()
     {
         _playerSettings = ReferenceManager.PlayerController.PlayerSettings;
+        _playerAnim = GetComponentInChildren<PlayerAnimation>();
         SwordSetup();
         MagicSetup();
     }
@@ -59,7 +60,10 @@ public class PlayerAction : MonoBehaviour
     private void SwordUpdate()
     {
         if (_isSlashing)
+        {
+           
             SlashIncrement();
+        }
     }
     public void Slash(InputAction.CallbackContext context)
     {
@@ -79,7 +83,8 @@ public class PlayerAction : MonoBehaviour
         _onSlashCD = true;
         _slashStartTime = Time.time;
         _isSlashing = true;
-
+        ReferenceManager.OM_SoundManager.PlaySound(0,1f);
+        _playerAnim.PlayerAttack();
         SlashIncrement();
         _swordTrail.Clear();
         _swordTrail.enabled = true;
@@ -124,6 +129,7 @@ public class PlayerAction : MonoBehaviour
     #endregion
     #region Magic
     [SerializeField] private GameObject _magicPrefab;
+    [SerializeField] private GameObject _smokePrefab;
     [SerializeField] private GameObject _magicLaserPointer;
     private int _magicCount;
     private void MagicSetup()
@@ -142,12 +148,20 @@ public class PlayerAction : MonoBehaviour
         }
         if (context.canceled)
         {
+            _playerAnim.PlayerCast();
+            
             _magicLaserPointer.SetActive(false);
             if (_magicCount < _playerSettings.MaxProjectiles)
             {
+                ReferenceManager.OM_SoundManager.PlaySound(6,0.7f);
                 Vector3 spawnPoint = transform.position + transform.forward;
                 GameObject magic = Instantiate(_magicPrefab, spawnPoint, transform.rotation);
                 _magicCount++;
+            }
+            else{
+                ReferenceManager.OM_SoundManager.PlaySound(5,0.5f);
+                Vector3 spawnPoint = transform.position + transform.forward;
+                GameObject magic = Instantiate(_smokePrefab, spawnPoint, transform.rotation);
             }
         }
     }
